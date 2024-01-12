@@ -116,8 +116,8 @@ static RetCode CreateFbNodes(FlatBufferBuilder64* builder, const SerializationCo
     return RC_SUCCESS;
 }
 
-static RetCode CreateFbGraphTopo(FlatBufferBuilder64* builder, const SerializationContext& ctx, const ir::GraphTopo* topo,
-                                 Offset<pmx::GraphTopo>* fb_topo) {
+static RetCode CreateFbGraphTopo(FlatBufferBuilder64* builder, const SerializationContext& ctx,
+                                 const ir::GraphTopo* topo, Offset<pmx::GraphTopo>* fb_topo) {
     auto fb_name = builder->CreateString(topo->GetName().c_str());
 
     Offset<Vector<Offset<pmx::Edge>>> fb_edges;
