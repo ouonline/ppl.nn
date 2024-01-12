@@ -69,7 +69,7 @@ table Partition {
 table GraphData {
     shapes: [Shape];
     partitions: [Partition];
-    shared_data: [ubyte];
+    shared_data: [ubyte] (vector64);
 }
 
 table Graph {
