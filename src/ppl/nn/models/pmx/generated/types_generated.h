@@ -8,9 +8,9 @@
 
 // Ensure the included flatbuffers.h is the same version as when this file was
 // generated, otherwise it may not be compatible.
-static_assert(FLATBUFFERS_VERSION_MAJOR == 2 &&
-              FLATBUFFERS_VERSION_MINOR == 0 &&
-              FLATBUFFERS_VERSION_REVISION == 8,
+static_assert(FLATBUFFERS_VERSION_MAJOR == 23 &&
+              FLATBUFFERS_VERSION_MINOR == 5 &&
+              FLATBUFFERS_VERSION_REVISION == 26,
              "Non-compatible flatbuffers version included");
 
 namespace ppl {
@@ -87,7 +87,7 @@ inline const char * const *EnumNamesDataType() {
 }
 
 inline const char *EnumNameDataType(DataType e) {
-  if (flatbuffers::IsOutRange(e, DataType_UNKNOWN, DataType_COMPLEX128)) return "";
+  if (::flatbuffers::IsOutRange(e, DataType_UNKNOWN, DataType_COMPLEX128)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesDataType()[index];
 }
@@ -138,7 +138,7 @@ inline const char * const *EnumNamesDataFormat() {
 }
 
 inline const char *EnumNameDataFormat(DataFormat e) {
-  if (flatbuffers::IsOutRange(e, DataFormat_UNKNOWN, DataFormat_N32CX)) return "";
+  if (::flatbuffers::IsOutRange(e, DataFormat_UNKNOWN, DataFormat_N32CX)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesDataFormat()[index];
 }

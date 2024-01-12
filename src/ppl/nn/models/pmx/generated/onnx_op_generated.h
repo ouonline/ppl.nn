@@ -8,9 +8,9 @@
 
 // Ensure the included flatbuffers.h is the same version as when this file was
 // generated, otherwise it may not be compatible.
-static_assert(FLATBUFFERS_VERSION_MAJOR == 2 &&
-              FLATBUFFERS_VERSION_MINOR == 0 &&
-              FLATBUFFERS_VERSION_REVISION == 8,
+static_assert(FLATBUFFERS_VERSION_MAJOR == 23 &&
+              FLATBUFFERS_VERSION_MINOR == 5 &&
+              FLATBUFFERS_VERSION_REVISION == 26,
              "Non-compatible flatbuffers version included");
 
 #include "types_generated.h"
@@ -147,7 +147,7 @@ inline const char * const *EnumNamesAutoPadType() {
 }
 
 inline const char *EnumNameAutoPadType(AutoPadType e) {
-  if (flatbuffers::IsOutRange(e, AutoPadType_NOTSET, AutoPadType_VALID)) return "";
+  if (::flatbuffers::IsOutRange(e, AutoPadType_NOTSET, AutoPadType_VALID)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesAutoPadType()[index];
 }
@@ -177,7 +177,7 @@ inline const char * const *EnumNamesDepthToSpaceMode() {
 }
 
 inline const char *EnumNameDepthToSpaceMode(DepthToSpaceMode e) {
-  if (flatbuffers::IsOutRange(e, DepthToSpaceMode_DCR, DepthToSpaceMode_CRD)) return "";
+  if (::flatbuffers::IsOutRange(e, DepthToSpaceMode_DCR, DepthToSpaceMode_CRD)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesDepthToSpaceMode()[index];
 }
@@ -234,7 +234,7 @@ inline const char * const *EnumNamesLSTMActivationType() {
 }
 
 inline const char *EnumNameLSTMActivationType(LSTMActivationType e) {
-  if (flatbuffers::IsOutRange(e, LSTMActivationType_RELU, LSTMActivationType_SOFTPLUS)) return "";
+  if (::flatbuffers::IsOutRange(e, LSTMActivationType_RELU, LSTMActivationType_SOFTPLUS)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesLSTMActivationType()[index];
 }
@@ -267,7 +267,7 @@ inline const char * const *EnumNamesLSTMDirectionType() {
 }
 
 inline const char *EnumNameLSTMDirectionType(LSTMDirectionType e) {
-  if (flatbuffers::IsOutRange(e, LSTMDirectionType_FORWARD, LSTMDirectionType_BIDIRECTIONAL)) return "";
+  if (::flatbuffers::IsOutRange(e, LSTMDirectionType_FORWARD, LSTMDirectionType_BIDIRECTIONAL)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesLSTMDirectionType()[index];
 }
@@ -300,7 +300,7 @@ inline const char * const *EnumNamesPadMode() {
 }
 
 inline const char *EnumNamePadMode(PadMode e) {
-  if (flatbuffers::IsOutRange(e, PadMode_CONSTANT, PadMode_EDGE)) return "";
+  if (::flatbuffers::IsOutRange(e, PadMode_CONSTANT, PadMode_EDGE)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesPadMode()[index];
 }
@@ -342,7 +342,7 @@ inline const char * const *EnumNamesResizeCoordTransMode() {
 }
 
 inline const char *EnumNameResizeCoordTransMode(ResizeCoordTransMode e) {
-  if (flatbuffers::IsOutRange(e, ResizeCoordTransMode_HALF_PIXEL, ResizeCoordTransMode_TF_CROP_AND_RESIZE)) return "";
+  if (::flatbuffers::IsOutRange(e, ResizeCoordTransMode_HALF_PIXEL, ResizeCoordTransMode_TF_CROP_AND_RESIZE)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesResizeCoordTransMode()[index];
 }
@@ -375,7 +375,7 @@ inline const char * const *EnumNamesResizeMode() {
 }
 
 inline const char *EnumNameResizeMode(ResizeMode e) {
-  if (flatbuffers::IsOutRange(e, ResizeMode_NEAREST, ResizeMode_CUBIC)) return "";
+  if (::flatbuffers::IsOutRange(e, ResizeMode_NEAREST, ResizeMode_CUBIC)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesResizeMode()[index];
 }
@@ -411,7 +411,7 @@ inline const char * const *EnumNamesResizeNearestMode() {
 }
 
 inline const char *EnumNameResizeNearestMode(ResizeNearestMode e) {
-  if (flatbuffers::IsOutRange(e, ResizeNearestMode_ROUND_PREFER_FLOOR, ResizeNearestMode_CEIL)) return "";
+  if (::flatbuffers::IsOutRange(e, ResizeNearestMode_ROUND_PREFER_FLOOR, ResizeNearestMode_CEIL)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesResizeNearestMode()[index];
 }
@@ -441,7 +441,7 @@ inline const char * const *EnumNamesRoiAlignMode() {
 }
 
 inline const char *EnumNameRoiAlignMode(RoiAlignMode e) {
-  if (flatbuffers::IsOutRange(e, RoiAlignMode_ROIALIGN_AVG, RoiAlignMode_ROIALIGN_MAX)) return "";
+  if (::flatbuffers::IsOutRange(e, RoiAlignMode_ROIALIGN_AVG, RoiAlignMode_ROIALIGN_MAX)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesRoiAlignMode()[index];
 }
@@ -561,7 +561,7 @@ inline const char * const *EnumNamesOpParamType() {
 }
 
 inline const char *EnumNameOpParamType(OpParamType e) {
-  if (flatbuffers::IsOutRange(e, OpParamType_NONE, OpParamType_UnsqueezeParam)) return "";
+  if (::flatbuffers::IsOutRange(e, OpParamType_NONE, OpParamType_UnsqueezeParam)) return "";
   const size_t index = static_cast<size_t>(e);
   return EnumNamesOpParamType()[index];
 }
@@ -694,10 +694,10 @@ template<> struct OpParamTypeTraits<ppl::nn::pmx::onnx::UnsqueezeParam> {
   static const OpParamType enum_value = OpParamType_UnsqueezeParam;
 };
 
-bool VerifyOpParamType(flatbuffers::Verifier &verifier, const void *obj, OpParamType type);
-bool VerifyOpParamTypeVector(flatbuffers::Verifier &verifier, const flatbuffers::Vector<flatbuffers::Offset<void>> *values, const flatbuffers::Vector<uint8_t> *types);
+bool VerifyOpParamType(::flatbuffers::Verifier &verifier, const void *obj, OpParamType type);
+bool VerifyOpParamTypeVector(::flatbuffers::Verifier &verifier, const ::flatbuffers::Vector<::flatbuffers::Offset<void>> *values, const ::flatbuffers::Vector<uint8_t> *types);
 
-struct ArgMaxParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct ArgMaxParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ArgMaxParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4,
@@ -709,7 +709,7 @@ struct ArgMaxParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t keepdims() const {
     return GetField<int32_t>(VT_KEEPDIMS, 1);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            VerifyField<int32_t>(verifier, VT_KEEPDIMS, 4) &&
@@ -719,27 +719,27 @@ struct ArgMaxParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ArgMaxParamBuilder {
   typedef ArgMaxParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(ArgMaxParam::VT_AXIS, axis, 0);
   }
   void add_keepdims(int32_t keepdims) {
     fbb_.AddElement<int32_t>(ArgMaxParam::VT_KEEPDIMS, keepdims, 1);
   }
-  explicit ArgMaxParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ArgMaxParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<ArgMaxParam> Finish() {
+  ::flatbuffers::Offset<ArgMaxParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<ArgMaxParam>(end);
+    auto o = ::flatbuffers::Offset<ArgMaxParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<ArgMaxParam> CreateArgMaxParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ArgMaxParam> CreateArgMaxParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 0,
     int32_t keepdims = 1) {
   ArgMaxParamBuilder builder_(_fbb);
@@ -748,7 +748,7 @@ inline flatbuffers::Offset<ArgMaxParam> CreateArgMaxParam(
   return builder_.Finish();
 }
 
-struct BatchNormalizationParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct BatchNormalizationParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef BatchNormalizationParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_EPSILON = 4,
@@ -760,7 +760,7 @@ struct BatchNormalizationParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Ta
   float momentum() const {
     return GetField<float>(VT_MOMENTUM, 0.9f);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<float>(verifier, VT_EPSILON, 4) &&
            VerifyField<float>(verifier, VT_MOMENTUM, 4) &&
@@ -770,27 +770,27 @@ struct BatchNormalizationParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Ta
 
 struct BatchNormalizationParamBuilder {
   typedef BatchNormalizationParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_epsilon(float epsilon) {
     fbb_.AddElement<float>(BatchNormalizationParam::VT_EPSILON, epsilon, 1e-05f);
   }
   void add_momentum(float momentum) {
     fbb_.AddElement<float>(BatchNormalizationParam::VT_MOMENTUM, momentum, 0.9f);
   }
-  explicit BatchNormalizationParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit BatchNormalizationParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<BatchNormalizationParam> Finish() {
+  ::flatbuffers::Offset<BatchNormalizationParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<BatchNormalizationParam>(end);
+    auto o = ::flatbuffers::Offset<BatchNormalizationParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<BatchNormalizationParam> CreateBatchNormalizationParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<BatchNormalizationParam> CreateBatchNormalizationParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     float epsilon = 1e-05f,
     float momentum = 0.9f) {
   BatchNormalizationParamBuilder builder_(_fbb);
@@ -799,7 +799,7 @@ inline flatbuffers::Offset<BatchNormalizationParam> CreateBatchNormalizationPara
   return builder_.Finish();
 }
 
-struct CastParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct CastParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef CastParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TO = 4
@@ -807,7 +807,7 @@ struct CastParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t to() const {
     return GetField<int32_t>(VT_TO, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_TO, 4) &&
            verifier.EndTable();
@@ -816,31 +816,31 @@ struct CastParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct CastParamBuilder {
   typedef CastParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_to(int32_t to) {
     fbb_.AddElement<int32_t>(CastParam::VT_TO, to, 0);
   }
-  explicit CastParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit CastParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<CastParam> Finish() {
+  ::flatbuffers::Offset<CastParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<CastParam>(end);
+    auto o = ::flatbuffers::Offset<CastParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<CastParam> CreateCastParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<CastParam> CreateCastParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t to = 0) {
   CastParamBuilder builder_(_fbb);
   builder_.add_to(to);
   return builder_.Finish();
 }
 
-struct ConcatParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct ConcatParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ConcatParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4
@@ -848,7 +848,7 @@ struct ConcatParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t axis() const {
     return GetField<int32_t>(VT_AXIS, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            verifier.EndTable();
@@ -857,31 +857,31 @@ struct ConcatParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ConcatParamBuilder {
   typedef ConcatParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(ConcatParam::VT_AXIS, axis, 0);
   }
-  explicit ConcatParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ConcatParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<ConcatParam> Finish() {
+  ::flatbuffers::Offset<ConcatParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<ConcatParam>(end);
+    auto o = ::flatbuffers::Offset<ConcatParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<ConcatParam> CreateConcatParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ConcatParam> CreateConcatParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 0) {
   ConcatParamBuilder builder_(_fbb);
   builder_.add_axis(axis);
   return builder_.Finish();
 }
 
-struct ConvParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct ConvParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ConvParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AUTO_PAD = 4,
@@ -897,19 +897,19 @@ struct ConvParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t group() const {
     return GetField<int32_t>(VT_GROUP, 0);
   }
-  const flatbuffers::Vector<int32_t> *dilations() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_DILATIONS);
+  const ::flatbuffers::Vector<int32_t> *dilations() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_DILATIONS);
   }
-  const flatbuffers::Vector<int32_t> *kernel_shape() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
+  const ::flatbuffers::Vector<int32_t> *kernel_shape() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
   }
-  const flatbuffers::Vector<int32_t> *pads() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_PADS);
+  const ::flatbuffers::Vector<int32_t> *pads() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_PADS);
   }
-  const flatbuffers::Vector<int32_t> *strides() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_STRIDES);
+  const ::flatbuffers::Vector<int32_t> *strides() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_STRIDES);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_AUTO_PAD, 4) &&
            VerifyField<int32_t>(verifier, VT_GROUP, 4) &&
@@ -927,45 +927,45 @@ struct ConvParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ConvParamBuilder {
   typedef ConvParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_auto_pad(ppl::nn::pmx::onnx::AutoPadType auto_pad) {
     fbb_.AddElement<uint32_t>(ConvParam::VT_AUTO_PAD, static_cast<uint32_t>(auto_pad), 0);
   }
   void add_group(int32_t group) {
     fbb_.AddElement<int32_t>(ConvParam::VT_GROUP, group, 0);
   }
-  void add_dilations(flatbuffers::Offset<flatbuffers::Vector<int32_t>> dilations) {
+  void add_dilations(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> dilations) {
     fbb_.AddOffset(ConvParam::VT_DILATIONS, dilations);
   }
-  void add_kernel_shape(flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape) {
+  void add_kernel_shape(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape) {
     fbb_.AddOffset(ConvParam::VT_KERNEL_SHAPE, kernel_shape);
   }
-  void add_pads(flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads) {
+  void add_pads(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads) {
     fbb_.AddOffset(ConvParam::VT_PADS, pads);
   }
-  void add_strides(flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides) {
+  void add_strides(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides) {
     fbb_.AddOffset(ConvParam::VT_STRIDES, strides);
   }
-  explicit ConvParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ConvParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<ConvParam> Finish() {
+  ::flatbuffers::Offset<ConvParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<ConvParam>(end);
+    auto o = ::flatbuffers::Offset<ConvParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<ConvParam> CreateConvParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ConvParam> CreateConvParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::AutoPadType auto_pad = ppl::nn::pmx::onnx::AutoPadType_NOTSET,
     int32_t group = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> dilations = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> dilations = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides = 0) {
   ConvParamBuilder builder_(_fbb);
   builder_.add_strides(strides);
   builder_.add_pads(pads);
@@ -976,8 +976,8 @@ inline flatbuffers::Offset<ConvParam> CreateConvParam(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<ConvParam> CreateConvParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ConvParam> CreateConvParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::AutoPadType auto_pad = ppl::nn::pmx::onnx::AutoPadType_NOTSET,
     int32_t group = 0,
     const std::vector<int32_t> *dilations = nullptr,
@@ -998,7 +998,7 @@ inline flatbuffers::Offset<ConvParam> CreateConvParamDirect(
       strides__);
 }
 
-struct ConvTransposeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct ConvTransposeParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ConvTransposeParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AUTO_PAD = 4,
@@ -1016,25 +1016,25 @@ struct ConvTransposeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t group() const {
     return GetField<int32_t>(VT_GROUP, 0);
   }
-  const flatbuffers::Vector<int32_t> *dilations() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_DILATIONS);
+  const ::flatbuffers::Vector<int32_t> *dilations() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_DILATIONS);
   }
-  const flatbuffers::Vector<int32_t> *kernel_shape() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
+  const ::flatbuffers::Vector<int32_t> *kernel_shape() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
   }
-  const flatbuffers::Vector<int32_t> *output_padding() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_OUTPUT_PADDING);
+  const ::flatbuffers::Vector<int32_t> *output_padding() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_OUTPUT_PADDING);
   }
-  const flatbuffers::Vector<int32_t> *output_shape() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_OUTPUT_SHAPE);
+  const ::flatbuffers::Vector<int32_t> *output_shape() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_OUTPUT_SHAPE);
   }
-  const flatbuffers::Vector<int32_t> *pads() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_PADS);
+  const ::flatbuffers::Vector<int32_t> *pads() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_PADS);
   }
-  const flatbuffers::Vector<int32_t> *strides() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_STRIDES);
+  const ::flatbuffers::Vector<int32_t> *strides() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_STRIDES);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_AUTO_PAD, 4) &&
            VerifyField<int32_t>(verifier, VT_GROUP, 4) &&
@@ -1056,53 +1056,53 @@ struct ConvTransposeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ConvTransposeParamBuilder {
   typedef ConvTransposeParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_auto_pad(ppl::nn::pmx::onnx::AutoPadType auto_pad) {
     fbb_.AddElement<uint32_t>(ConvTransposeParam::VT_AUTO_PAD, static_cast<uint32_t>(auto_pad), 0);
   }
   void add_group(int32_t group) {
     fbb_.AddElement<int32_t>(ConvTransposeParam::VT_GROUP, group, 0);
   }
-  void add_dilations(flatbuffers::Offset<flatbuffers::Vector<int32_t>> dilations) {
+  void add_dilations(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> dilations) {
     fbb_.AddOffset(ConvTransposeParam::VT_DILATIONS, dilations);
   }
-  void add_kernel_shape(flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape) {
+  void add_kernel_shape(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape) {
     fbb_.AddOffset(ConvTransposeParam::VT_KERNEL_SHAPE, kernel_shape);
   }
-  void add_output_padding(flatbuffers::Offset<flatbuffers::Vector<int32_t>> output_padding) {
+  void add_output_padding(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> output_padding) {
     fbb_.AddOffset(ConvTransposeParam::VT_OUTPUT_PADDING, output_padding);
   }
-  void add_output_shape(flatbuffers::Offset<flatbuffers::Vector<int32_t>> output_shape) {
+  void add_output_shape(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> output_shape) {
     fbb_.AddOffset(ConvTransposeParam::VT_OUTPUT_SHAPE, output_shape);
   }
-  void add_pads(flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads) {
+  void add_pads(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads) {
     fbb_.AddOffset(ConvTransposeParam::VT_PADS, pads);
   }
-  void add_strides(flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides) {
+  void add_strides(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides) {
     fbb_.AddOffset(ConvTransposeParam::VT_STRIDES, strides);
   }
-  explicit ConvTransposeParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ConvTransposeParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<ConvTransposeParam> Finish() {
+  ::flatbuffers::Offset<ConvTransposeParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<ConvTransposeParam>(end);
+    auto o = ::flatbuffers::Offset<ConvTransposeParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<ConvTransposeParam> CreateConvTransposeParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ConvTransposeParam> CreateConvTransposeParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::AutoPadType auto_pad = ppl::nn::pmx::onnx::AutoPadType_NOTSET,
     int32_t group = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> dilations = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> output_padding = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> output_shape = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> dilations = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> output_padding = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> output_shape = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides = 0) {
   ConvTransposeParamBuilder builder_(_fbb);
   builder_.add_strides(strides);
   builder_.add_pads(pads);
@@ -1115,8 +1115,8 @@ inline flatbuffers::Offset<ConvTransposeParam> CreateConvTransposeParam(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<ConvTransposeParam> CreateConvTransposeParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ConvTransposeParam> CreateConvTransposeParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::AutoPadType auto_pad = ppl::nn::pmx::onnx::AutoPadType_NOTSET,
     int32_t group = 0,
     const std::vector<int32_t> *dilations = nullptr,
@@ -1143,7 +1143,7 @@ inline flatbuffers::Offset<ConvTransposeParam> CreateConvTransposeParamDirect(
       strides__);
 }
 
-struct CumSumParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct CumSumParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef CumSumParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_EXCLUSIVE = 4,
@@ -1155,7 +1155,7 @@ struct CumSumParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t reverse() const {
     return GetField<int32_t>(VT_REVERSE, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_EXCLUSIVE, 4) &&
            VerifyField<int32_t>(verifier, VT_REVERSE, 4) &&
@@ -1165,27 +1165,27 @@ struct CumSumParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct CumSumParamBuilder {
   typedef CumSumParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_exclusive(int32_t exclusive) {
     fbb_.AddElement<int32_t>(CumSumParam::VT_EXCLUSIVE, exclusive, 0);
   }
   void add_reverse(int32_t reverse) {
     fbb_.AddElement<int32_t>(CumSumParam::VT_REVERSE, reverse, 0);
   }
-  explicit CumSumParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit CumSumParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<CumSumParam> Finish() {
+  ::flatbuffers::Offset<CumSumParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<CumSumParam>(end);
+    auto o = ::flatbuffers::Offset<CumSumParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<CumSumParam> CreateCumSumParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<CumSumParam> CreateCumSumParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t exclusive = 0,
     int32_t reverse = 0) {
   CumSumParamBuilder builder_(_fbb);
@@ -1194,7 +1194,7 @@ inline flatbuffers::Offset<CumSumParam> CreateCumSumParam(
   return builder_.Finish();
 }
 
-struct DepthToSpaceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct DepthToSpaceParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef DepthToSpaceParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_BLOCKSIZE = 4,
@@ -1206,7 +1206,7 @@ struct DepthToSpaceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   ppl::nn::pmx::onnx::DepthToSpaceMode mode() const {
     return static_cast<ppl::nn::pmx::onnx::DepthToSpaceMode>(GetField<uint32_t>(VT_MODE, 0));
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_BLOCKSIZE, 4) &&
            VerifyField<uint32_t>(verifier, VT_MODE, 4) &&
@@ -1216,27 +1216,27 @@ struct DepthToSpaceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct DepthToSpaceParamBuilder {
   typedef DepthToSpaceParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_blocksize(int32_t blocksize) {
     fbb_.AddElement<int32_t>(DepthToSpaceParam::VT_BLOCKSIZE, blocksize, 0);
   }
   void add_mode(ppl::nn::pmx::onnx::DepthToSpaceMode mode) {
     fbb_.AddElement<uint32_t>(DepthToSpaceParam::VT_MODE, static_cast<uint32_t>(mode), 0);
   }
-  explicit DepthToSpaceParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit DepthToSpaceParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<DepthToSpaceParam> Finish() {
+  ::flatbuffers::Offset<DepthToSpaceParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<DepthToSpaceParam>(end);
+    auto o = ::flatbuffers::Offset<DepthToSpaceParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<DepthToSpaceParam> CreateDepthToSpaceParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<DepthToSpaceParam> CreateDepthToSpaceParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t blocksize = 0,
     ppl::nn::pmx::onnx::DepthToSpaceMode mode = ppl::nn::pmx::onnx::DepthToSpaceMode_DCR) {
   DepthToSpaceParamBuilder builder_(_fbb);
@@ -1245,7 +1245,7 @@ inline flatbuffers::Offset<DepthToSpaceParam> CreateDepthToSpaceParam(
   return builder_.Finish();
 }
 
-struct FlattenParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct FlattenParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef FlattenParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4
@@ -1253,7 +1253,7 @@ struct FlattenParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t axis() const {
     return GetField<int32_t>(VT_AXIS, 1);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            verifier.EndTable();
@@ -1262,31 +1262,31 @@ struct FlattenParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct FlattenParamBuilder {
   typedef FlattenParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(FlattenParam::VT_AXIS, axis, 1);
   }
-  explicit FlattenParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit FlattenParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<FlattenParam> Finish() {
+  ::flatbuffers::Offset<FlattenParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<FlattenParam>(end);
+    auto o = ::flatbuffers::Offset<FlattenParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<FlattenParam> CreateFlattenParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<FlattenParam> CreateFlattenParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 1) {
   FlattenParamBuilder builder_(_fbb);
   builder_.add_axis(axis);
   return builder_.Finish();
 }
 
-struct GatherNDParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct GatherNDParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef GatherNDParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_BATCH_DIMS = 4
@@ -1294,7 +1294,7 @@ struct GatherNDParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t batch_dims() const {
     return GetField<int32_t>(VT_BATCH_DIMS, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_BATCH_DIMS, 4) &&
            verifier.EndTable();
@@ -1303,31 +1303,31 @@ struct GatherNDParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct GatherNDParamBuilder {
   typedef GatherNDParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_batch_dims(int32_t batch_dims) {
     fbb_.AddElement<int32_t>(GatherNDParam::VT_BATCH_DIMS, batch_dims, 0);
   }
-  explicit GatherNDParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit GatherNDParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<GatherNDParam> Finish() {
+  ::flatbuffers::Offset<GatherNDParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<GatherNDParam>(end);
+    auto o = ::flatbuffers::Offset<GatherNDParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<GatherNDParam> CreateGatherNDParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<GatherNDParam> CreateGatherNDParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t batch_dims = 0) {
   GatherNDParamBuilder builder_(_fbb);
   builder_.add_batch_dims(batch_dims);
   return builder_.Finish();
 }
 
-struct GatherParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct GatherParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef GatherParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4
@@ -1335,7 +1335,7 @@ struct GatherParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t axis() const {
     return GetField<int32_t>(VT_AXIS, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            verifier.EndTable();
@@ -1344,31 +1344,31 @@ struct GatherParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct GatherParamBuilder {
   typedef GatherParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(GatherParam::VT_AXIS, axis, 0);
   }
-  explicit GatherParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit GatherParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<GatherParam> Finish() {
+  ::flatbuffers::Offset<GatherParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<GatherParam>(end);
+    auto o = ::flatbuffers::Offset<GatherParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<GatherParam> CreateGatherParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<GatherParam> CreateGatherParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 0) {
   GatherParamBuilder builder_(_fbb);
   builder_.add_axis(axis);
   return builder_.Finish();
 }
 
-struct GemmParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct GemmParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef GemmParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_ALPHA = 4,
@@ -1388,7 +1388,7 @@ struct GemmParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t trans_b() const {
     return GetField<int32_t>(VT_TRANS_B, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<float>(verifier, VT_ALPHA, 4) &&
            VerifyField<float>(verifier, VT_BETA, 4) &&
@@ -1400,8 +1400,8 @@ struct GemmParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct GemmParamBuilder {
   typedef GemmParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_alpha(float alpha) {
     fbb_.AddElement<float>(GemmParam::VT_ALPHA, alpha, 1.0f);
   }
@@ -1414,19 +1414,19 @@ struct GemmParamBuilder {
   void add_trans_b(int32_t trans_b) {
     fbb_.AddElement<int32_t>(GemmParam::VT_TRANS_B, trans_b, 0);
   }
-  explicit GemmParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit GemmParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<GemmParam> Finish() {
+  ::flatbuffers::Offset<GemmParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<GemmParam>(end);
+    auto o = ::flatbuffers::Offset<GemmParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<GemmParam> CreateGemmParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<GemmParam> CreateGemmParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     float alpha = 1.0f,
     float beta = 1.0f,
     int32_t trans_a = 0,
@@ -1439,7 +1439,7 @@ inline flatbuffers::Offset<GemmParam> CreateGemmParam(
   return builder_.Finish();
 }
 
-struct InstanceNormalizationParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct InstanceNormalizationParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef InstanceNormalizationParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_EPSILON = 4
@@ -1447,7 +1447,7 @@ struct InstanceNormalizationParam FLATBUFFERS_FINAL_CLASS : private flatbuffers:
   float epsilon() const {
     return GetField<float>(VT_EPSILON, 1e-05f);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<float>(verifier, VT_EPSILON, 4) &&
            verifier.EndTable();
@@ -1456,31 +1456,31 @@ struct InstanceNormalizationParam FLATBUFFERS_FINAL_CLASS : private flatbuffers:
 
 struct InstanceNormalizationParamBuilder {
   typedef InstanceNormalizationParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_epsilon(float epsilon) {
     fbb_.AddElement<float>(InstanceNormalizationParam::VT_EPSILON, epsilon, 1e-05f);
   }
-  explicit InstanceNormalizationParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit InstanceNormalizationParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<InstanceNormalizationParam> Finish() {
+  ::flatbuffers::Offset<InstanceNormalizationParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<InstanceNormalizationParam>(end);
+    auto o = ::flatbuffers::Offset<InstanceNormalizationParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<InstanceNormalizationParam> CreateInstanceNormalizationParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<InstanceNormalizationParam> CreateInstanceNormalizationParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     float epsilon = 1e-05f) {
   InstanceNormalizationParamBuilder builder_(_fbb);
   builder_.add_epsilon(epsilon);
   return builder_.Finish();
 }
 
-struct LeakyReluParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct LeakyReluParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef LeakyReluParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_ALPHA = 4
@@ -1488,7 +1488,7 @@ struct LeakyReluParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   float alpha() const {
     return GetField<float>(VT_ALPHA, 0.01f);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<float>(verifier, VT_ALPHA, 4) &&
            verifier.EndTable();
@@ -1497,31 +1497,31 @@ struct LeakyReluParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct LeakyReluParamBuilder {
   typedef LeakyReluParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_alpha(float alpha) {
     fbb_.AddElement<float>(LeakyReluParam::VT_ALPHA, alpha, 0.01f);
   }
-  explicit LeakyReluParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit LeakyReluParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<LeakyReluParam> Finish() {
+  ::flatbuffers::Offset<LeakyReluParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<LeakyReluParam>(end);
+    auto o = ::flatbuffers::Offset<LeakyReluParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<LeakyReluParam> CreateLeakyReluParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<LeakyReluParam> CreateLeakyReluParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     float alpha = 0.01f) {
   LeakyReluParamBuilder builder_(_fbb);
   builder_.add_alpha(alpha);
   return builder_.Finish();
 }
 
-struct LRNParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct LRNParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef LRNParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_ALPHA = 4,
@@ -1541,7 +1541,7 @@ struct LRNParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t size() const {
     return GetField<int32_t>(VT_SIZE, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<float>(verifier, VT_ALPHA, 4) &&
            VerifyField<float>(verifier, VT_BETA, 4) &&
@@ -1553,8 +1553,8 @@ struct LRNParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct LRNParamBuilder {
   typedef LRNParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_alpha(float alpha) {
     fbb_.AddElement<float>(LRNParam::VT_ALPHA, alpha, 0.0001f);
   }
@@ -1567,19 +1567,19 @@ struct LRNParamBuilder {
   void add_size(int32_t size) {
     fbb_.AddElement<int32_t>(LRNParam::VT_SIZE, size, 0);
   }
-  explicit LRNParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit LRNParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<LRNParam> Finish() {
+  ::flatbuffers::Offset<LRNParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<LRNParam>(end);
+    auto o = ::flatbuffers::Offset<LRNParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<LRNParam> CreateLRNParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<LRNParam> CreateLRNParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     float alpha = 0.0001f,
     float beta = 0.75f,
     float bias = 1.0f,
@@ -1592,7 +1592,7 @@ inline flatbuffers::Offset<LRNParam> CreateLRNParam(
   return builder_.Finish();
 }
 
-struct LSTMParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct LSTMParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef LSTMParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_ACTIVATION_ALPHA = 4,
@@ -1603,14 +1603,14 @@ struct LSTMParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
     VT_HIDDEN_SIZE = 14,
     VT_INPUT_FORGET = 16
   };
-  const flatbuffers::Vector<float> *activation_alpha() const {
-    return GetPointer<const flatbuffers::Vector<float> *>(VT_ACTIVATION_ALPHA);
+  const ::flatbuffers::Vector<float> *activation_alpha() const {
+    return GetPointer<const ::flatbuffers::Vector<float> *>(VT_ACTIVATION_ALPHA);
   }
-  const flatbuffers::Vector<float> *activation_beta() const {
-    return GetPointer<const flatbuffers::Vector<float> *>(VT_ACTIVATION_BETA);
+  const ::flatbuffers::Vector<float> *activation_beta() const {
+    return GetPointer<const ::flatbuffers::Vector<float> *>(VT_ACTIVATION_BETA);
   }
-  const flatbuffers::Vector<uint32_t> *activations() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_ACTIVATIONS);
+  const ::flatbuffers::Vector<uint32_t> *activations() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_ACTIVATIONS);
   }
   float clip() const {
     return GetField<float>(VT_CLIP, 0.0f);
@@ -1624,7 +1624,7 @@ struct LSTMParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t input_forget() const {
     return GetField<int32_t>(VT_INPUT_FORGET, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_ACTIVATION_ALPHA) &&
            verifier.VerifyVector(activation_alpha()) &&
@@ -1642,15 +1642,15 @@ struct LSTMParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct LSTMParamBuilder {
   typedef LSTMParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_activation_alpha(flatbuffers::Offset<flatbuffers::Vector<float>> activation_alpha) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_activation_alpha(::flatbuffers::Offset<::flatbuffers::Vector<float>> activation_alpha) {
     fbb_.AddOffset(LSTMParam::VT_ACTIVATION_ALPHA, activation_alpha);
   }
-  void add_activation_beta(flatbuffers::Offset<flatbuffers::Vector<float>> activation_beta) {
+  void add_activation_beta(::flatbuffers::Offset<::flatbuffers::Vector<float>> activation_beta) {
     fbb_.AddOffset(LSTMParam::VT_ACTIVATION_BETA, activation_beta);
   }
-  void add_activations(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> activations) {
+  void add_activations(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> activations) {
     fbb_.AddOffset(LSTMParam::VT_ACTIVATIONS, activations);
   }
   void add_clip(float clip) {
@@ -1665,22 +1665,22 @@ struct LSTMParamBuilder {
   void add_input_forget(int32_t input_forget) {
     fbb_.AddElement<int32_t>(LSTMParam::VT_INPUT_FORGET, input_forget, 0);
   }
-  explicit LSTMParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit LSTMParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<LSTMParam> Finish() {
+  ::flatbuffers::Offset<LSTMParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<LSTMParam>(end);
+    auto o = ::flatbuffers::Offset<LSTMParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<LSTMParam> CreateLSTMParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<float>> activation_alpha = 0,
-    flatbuffers::Offset<flatbuffers::Vector<float>> activation_beta = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> activations = 0,
+inline ::flatbuffers::Offset<LSTMParam> CreateLSTMParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<float>> activation_alpha = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<float>> activation_beta = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> activations = 0,
     float clip = 0.0f,
     ppl::nn::pmx::onnx::LSTMDirectionType direction = ppl::nn::pmx::onnx::LSTMDirectionType_FORWARD,
     int32_t hidden_size = 0,
@@ -1696,8 +1696,8 @@ inline flatbuffers::Offset<LSTMParam> CreateLSTMParam(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<LSTMParam> CreateLSTMParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<LSTMParam> CreateLSTMParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const std::vector<float> *activation_alpha = nullptr,
     const std::vector<float> *activation_beta = nullptr,
     const std::vector<uint32_t> *activations = nullptr,
@@ -1719,23 +1719,23 @@ inline flatbuffers::Offset<LSTMParam> CreateLSTMParamDirect(
       input_forget);
 }
 
-struct MaxUnpoolParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct MaxUnpoolParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef MaxUnpoolParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_KERNEL_SHAPE = 4,
     VT_PADS = 6,
     VT_STRIDES = 8
   };
-  const flatbuffers::Vector<int32_t> *kernel_shape() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
+  const ::flatbuffers::Vector<int32_t> *kernel_shape() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
   }
-  const flatbuffers::Vector<int32_t> *pads() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_PADS);
+  const ::flatbuffers::Vector<int32_t> *pads() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_PADS);
   }
-  const flatbuffers::Vector<int32_t> *strides() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_STRIDES);
+  const ::flatbuffers::Vector<int32_t> *strides() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_STRIDES);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_KERNEL_SHAPE) &&
            verifier.VerifyVector(kernel_shape()) &&
@@ -1749,33 +1749,33 @@ struct MaxUnpoolParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct MaxUnpoolParamBuilder {
   typedef MaxUnpoolParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_kernel_shape(flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_kernel_shape(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape) {
     fbb_.AddOffset(MaxUnpoolParam::VT_KERNEL_SHAPE, kernel_shape);
   }
-  void add_pads(flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads) {
+  void add_pads(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads) {
     fbb_.AddOffset(MaxUnpoolParam::VT_PADS, pads);
   }
-  void add_strides(flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides) {
+  void add_strides(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides) {
     fbb_.AddOffset(MaxUnpoolParam::VT_STRIDES, strides);
   }
-  explicit MaxUnpoolParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit MaxUnpoolParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<MaxUnpoolParam> Finish() {
+  ::flatbuffers::Offset<MaxUnpoolParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<MaxUnpoolParam>(end);
+    auto o = ::flatbuffers::Offset<MaxUnpoolParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<MaxUnpoolParam> CreateMaxUnpoolParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides = 0) {
+inline ::flatbuffers::Offset<MaxUnpoolParam> CreateMaxUnpoolParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides = 0) {
   MaxUnpoolParamBuilder builder_(_fbb);
   builder_.add_strides(strides);
   builder_.add_pads(pads);
@@ -1783,8 +1783,8 @@ inline flatbuffers::Offset<MaxUnpoolParam> CreateMaxUnpoolParam(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<MaxUnpoolParam> CreateMaxUnpoolParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<MaxUnpoolParam> CreateMaxUnpoolParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const std::vector<int32_t> *kernel_shape = nullptr,
     const std::vector<int32_t> *pads = nullptr,
     const std::vector<int32_t> *strides = nullptr) {
@@ -1798,7 +1798,7 @@ inline flatbuffers::Offset<MaxUnpoolParam> CreateMaxUnpoolParamDirect(
       strides__);
 }
 
-struct NonMaxSuppressionParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct NonMaxSuppressionParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef NonMaxSuppressionParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_CENTER_POINT_BOX = 4
@@ -1806,7 +1806,7 @@ struct NonMaxSuppressionParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Tab
   int32_t center_point_box() const {
     return GetField<int32_t>(VT_CENTER_POINT_BOX, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_CENTER_POINT_BOX, 4) &&
            verifier.EndTable();
@@ -1815,31 +1815,31 @@ struct NonMaxSuppressionParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Tab
 
 struct NonMaxSuppressionParamBuilder {
   typedef NonMaxSuppressionParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_center_point_box(int32_t center_point_box) {
     fbb_.AddElement<int32_t>(NonMaxSuppressionParam::VT_CENTER_POINT_BOX, center_point_box, 0);
   }
-  explicit NonMaxSuppressionParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit NonMaxSuppressionParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<NonMaxSuppressionParam> Finish() {
+  ::flatbuffers::Offset<NonMaxSuppressionParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<NonMaxSuppressionParam>(end);
+    auto o = ::flatbuffers::Offset<NonMaxSuppressionParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<NonMaxSuppressionParam> CreateNonMaxSuppressionParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<NonMaxSuppressionParam> CreateNonMaxSuppressionParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t center_point_box = 0) {
   NonMaxSuppressionParamBuilder builder_(_fbb);
   builder_.add_center_point_box(center_point_box);
   return builder_.Finish();
 }
 
-struct PadParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct PadParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef PadParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_MODE = 4
@@ -1847,7 +1847,7 @@ struct PadParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   ppl::nn::pmx::onnx::PadMode mode() const {
     return static_cast<ppl::nn::pmx::onnx::PadMode>(GetField<uint32_t>(VT_MODE, 0));
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_MODE, 4) &&
            verifier.EndTable();
@@ -1856,31 +1856,31 @@ struct PadParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct PadParamBuilder {
   typedef PadParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_mode(ppl::nn::pmx::onnx::PadMode mode) {
     fbb_.AddElement<uint32_t>(PadParam::VT_MODE, static_cast<uint32_t>(mode), 0);
   }
-  explicit PadParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit PadParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<PadParam> Finish() {
+  ::flatbuffers::Offset<PadParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<PadParam>(end);
+    auto o = ::flatbuffers::Offset<PadParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<PadParam> CreatePadParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<PadParam> CreatePadParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::PadMode mode = ppl::nn::pmx::onnx::PadMode_CONSTANT) {
   PadParamBuilder builder_(_fbb);
   builder_.add_mode(mode);
   return builder_.Finish();
 }
 
-struct PoolingParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct PoolingParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef PoolingParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AUTO_PAD = 4,
@@ -1904,19 +1904,19 @@ struct PoolingParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t storage_order() const {
     return GetField<int32_t>(VT_STORAGE_ORDER, 0);
   }
-  const flatbuffers::Vector<int32_t> *dilations() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_DILATIONS);
+  const ::flatbuffers::Vector<int32_t> *dilations() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_DILATIONS);
   }
-  const flatbuffers::Vector<int32_t> *kernel_shape() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
+  const ::flatbuffers::Vector<int32_t> *kernel_shape() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_KERNEL_SHAPE);
   }
-  const flatbuffers::Vector<int32_t> *pads() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_PADS);
+  const ::flatbuffers::Vector<int32_t> *pads() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_PADS);
   }
-  const flatbuffers::Vector<int32_t> *strides() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_STRIDES);
+  const ::flatbuffers::Vector<int32_t> *strides() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_STRIDES);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_AUTO_PAD, 4) &&
            VerifyField<int32_t>(verifier, VT_CEIL_MODE, 4) &&
@@ -1936,8 +1936,8 @@ struct PoolingParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct PoolingParamBuilder {
   typedef PoolingParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_auto_pad(ppl::nn::pmx::onnx::AutoPadType auto_pad) {
     fbb_.AddElement<uint32_t>(PoolingParam::VT_AUTO_PAD, static_cast<uint32_t>(auto_pad), 0);
   }
@@ -1950,39 +1950,39 @@ struct PoolingParamBuilder {
   void add_storage_order(int32_t storage_order) {
     fbb_.AddElement<int32_t>(PoolingParam::VT_STORAGE_ORDER, storage_order, 0);
   }
-  void add_dilations(flatbuffers::Offset<flatbuffers::Vector<int32_t>> dilations) {
+  void add_dilations(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> dilations) {
     fbb_.AddOffset(PoolingParam::VT_DILATIONS, dilations);
   }
-  void add_kernel_shape(flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape) {
+  void add_kernel_shape(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape) {
     fbb_.AddOffset(PoolingParam::VT_KERNEL_SHAPE, kernel_shape);
   }
-  void add_pads(flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads) {
+  void add_pads(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads) {
     fbb_.AddOffset(PoolingParam::VT_PADS, pads);
   }
-  void add_strides(flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides) {
+  void add_strides(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides) {
     fbb_.AddOffset(PoolingParam::VT_STRIDES, strides);
   }
-  explicit PoolingParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit PoolingParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<PoolingParam> Finish() {
+  ::flatbuffers::Offset<PoolingParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<PoolingParam>(end);
+    auto o = ::flatbuffers::Offset<PoolingParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<PoolingParam> CreatePoolingParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<PoolingParam> CreatePoolingParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::AutoPadType auto_pad = ppl::nn::pmx::onnx::AutoPadType_NOTSET,
     int32_t ceil_mode = 0,
     int32_t count_include_pad = 0,
     int32_t storage_order = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> dilations = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> kernel_shape = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> pads = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> strides = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> dilations = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> kernel_shape = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> pads = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> strides = 0) {
   PoolingParamBuilder builder_(_fbb);
   builder_.add_strides(strides);
   builder_.add_pads(pads);
@@ -1995,8 +1995,8 @@ inline flatbuffers::Offset<PoolingParam> CreatePoolingParam(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<PoolingParam> CreatePoolingParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<PoolingParam> CreatePoolingParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::AutoPadType auto_pad = ppl::nn::pmx::onnx::AutoPadType_NOTSET,
     int32_t ceil_mode = 0,
     int32_t count_include_pad = 0,
@@ -2021,7 +2021,7 @@ inline flatbuffers::Offset<PoolingParam> CreatePoolingParamDirect(
       strides__);
 }
 
-struct ReduceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct ReduceParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ReduceParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_KEEPDIMS = 4,
@@ -2030,10 +2030,10 @@ struct ReduceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t keepdims() const {
     return GetField<int32_t>(VT_KEEPDIMS, 1);
   }
-  const flatbuffers::Vector<int32_t> *axes() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_AXES);
+  const ::flatbuffers::Vector<int32_t> *axes() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_AXES);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_KEEPDIMS, 4) &&
            VerifyOffset(verifier, VT_AXES) &&
@@ -2044,37 +2044,37 @@ struct ReduceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ReduceParamBuilder {
   typedef ReduceParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_keepdims(int32_t keepdims) {
     fbb_.AddElement<int32_t>(ReduceParam::VT_KEEPDIMS, keepdims, 1);
   }
-  void add_axes(flatbuffers::Offset<flatbuffers::Vector<int32_t>> axes) {
+  void add_axes(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> axes) {
     fbb_.AddOffset(ReduceParam::VT_AXES, axes);
   }
-  explicit ReduceParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ReduceParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<ReduceParam> Finish() {
+  ::flatbuffers::Offset<ReduceParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<ReduceParam>(end);
+    auto o = ::flatbuffers::Offset<ReduceParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<ReduceParam> CreateReduceParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ReduceParam> CreateReduceParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t keepdims = 1,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> axes = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> axes = 0) {
   ReduceParamBuilder builder_(_fbb);
   builder_.add_axes(axes);
   builder_.add_keepdims(keepdims);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<ReduceParam> CreateReduceParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ReduceParam> CreateReduceParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t keepdims = 1,
     const std::vector<int32_t> *axes = nullptr) {
   auto axes__ = axes ? _fbb.CreateVector<int32_t>(*axes) : 0;
@@ -2084,7 +2084,7 @@ inline flatbuffers::Offset<ReduceParam> CreateReduceParamDirect(
       axes__);
 }
 
-struct ResizeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct ResizeParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ResizeParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_COORD_TRANS_MODE = 4,
@@ -2112,7 +2112,7 @@ struct ResizeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   ppl::nn::pmx::onnx::ResizeNearestMode nearest_mode() const {
     return static_cast<ppl::nn::pmx::onnx::ResizeNearestMode>(GetField<uint32_t>(VT_NEAREST_MODE, 0));
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_COORD_TRANS_MODE, 4) &&
            VerifyField<float>(verifier, VT_CUBIC_COEFF_A, 4) &&
@@ -2126,8 +2126,8 @@ struct ResizeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ResizeParamBuilder {
   typedef ResizeParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_coord_trans_mode(ppl::nn::pmx::onnx::ResizeCoordTransMode coord_trans_mode) {
     fbb_.AddElement<uint32_t>(ResizeParam::VT_COORD_TRANS_MODE, static_cast<uint32_t>(coord_trans_mode), 0);
   }
@@ -2146,19 +2146,19 @@ struct ResizeParamBuilder {
   void add_nearest_mode(ppl::nn::pmx::onnx::ResizeNearestMode nearest_mode) {
     fbb_.AddElement<uint32_t>(ResizeParam::VT_NEAREST_MODE, static_cast<uint32_t>(nearest_mode), 0);
   }
-  explicit ResizeParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ResizeParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<ResizeParam> Finish() {
+  ::flatbuffers::Offset<ResizeParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<ResizeParam>(end);
+    auto o = ::flatbuffers::Offset<ResizeParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<ResizeParam> CreateResizeParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ResizeParam> CreateResizeParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::ResizeCoordTransMode coord_trans_mode = ppl::nn::pmx::onnx::ResizeCoordTransMode_HALF_PIXEL,
     float cubic_coeff_a = -0.75f,
     int32_t exclude_outside = 0,
@@ -2175,7 +2175,7 @@ inline flatbuffers::Offset<ResizeParam> CreateResizeParam(
   return builder_.Finish();
 }
 
-struct RoiAlignParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct RoiAlignParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef RoiAlignParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_MODE = 4,
@@ -2199,7 +2199,7 @@ struct RoiAlignParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   float spatial_scale() const {
     return GetField<float>(VT_SPATIAL_SCALE, 1.0f);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_MODE, 4) &&
            VerifyField<int32_t>(verifier, VT_OUTPUT_HEIGHT, 4) &&
@@ -2212,8 +2212,8 @@ struct RoiAlignParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct RoiAlignParamBuilder {
   typedef RoiAlignParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_mode(ppl::nn::pmx::onnx::RoiAlignMode mode) {
     fbb_.AddElement<uint32_t>(RoiAlignParam::VT_MODE, static_cast<uint32_t>(mode), 0);
   }
@@ -2229,19 +2229,19 @@ struct RoiAlignParamBuilder {
   void add_spatial_scale(float spatial_scale) {
     fbb_.AddElement<float>(RoiAlignParam::VT_SPATIAL_SCALE, spatial_scale, 1.0f);
   }
-  explicit RoiAlignParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit RoiAlignParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<RoiAlignParam> Finish() {
+  ::flatbuffers::Offset<RoiAlignParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<RoiAlignParam>(end);
+    auto o = ::flatbuffers::Offset<RoiAlignParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<RoiAlignParam> CreateRoiAlignParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<RoiAlignParam> CreateRoiAlignParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::RoiAlignMode mode = ppl::nn::pmx::onnx::RoiAlignMode_ROIALIGN_AVG,
     int32_t output_height = 1,
     int32_t output_width = 1,
@@ -2256,7 +2256,7 @@ inline flatbuffers::Offset<RoiAlignParam> CreateRoiAlignParam(
   return builder_.Finish();
 }
 
-struct ScatterElementsParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct ScatterElementsParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ScatterElementsParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4
@@ -2264,7 +2264,7 @@ struct ScatterElementsParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table
   int32_t axis() const {
     return GetField<int32_t>(VT_AXIS, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            verifier.EndTable();
@@ -2273,31 +2273,31 @@ struct ScatterElementsParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table
 
 struct ScatterElementsParamBuilder {
   typedef ScatterElementsParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(ScatterElementsParam::VT_AXIS, axis, 0);
   }
-  explicit ScatterElementsParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ScatterElementsParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<ScatterElementsParam> Finish() {
+  ::flatbuffers::Offset<ScatterElementsParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<ScatterElementsParam>(end);
+    auto o = ::flatbuffers::Offset<ScatterElementsParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<ScatterElementsParam> CreateScatterElementsParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<ScatterElementsParam> CreateScatterElementsParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 0) {
   ScatterElementsParamBuilder builder_(_fbb);
   builder_.add_axis(axis);
   return builder_.Finish();
 }
 
-struct SoftmaxParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct SoftmaxParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef SoftmaxParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4
@@ -2305,7 +2305,7 @@ struct SoftmaxParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t axis() const {
     return GetField<int32_t>(VT_AXIS, 1);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            verifier.EndTable();
@@ -2314,31 +2314,31 @@ struct SoftmaxParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct SoftmaxParamBuilder {
   typedef SoftmaxParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(SoftmaxParam::VT_AXIS, axis, 1);
   }
-  explicit SoftmaxParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit SoftmaxParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<SoftmaxParam> Finish() {
+  ::flatbuffers::Offset<SoftmaxParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<SoftmaxParam>(end);
+    auto o = ::flatbuffers::Offset<SoftmaxParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<SoftmaxParam> CreateSoftmaxParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<SoftmaxParam> CreateSoftmaxParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 1) {
   SoftmaxParamBuilder builder_(_fbb);
   builder_.add_axis(axis);
   return builder_.Finish();
 }
 
-struct SplitParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct SplitParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef SplitParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4,
@@ -2347,10 +2347,10 @@ struct SplitParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t axis() const {
     return GetField<int32_t>(VT_AXIS, 0);
   }
-  const flatbuffers::Vector<int32_t> *split_point() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_SPLIT_POINT);
+  const ::flatbuffers::Vector<int32_t> *split_point() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_SPLIT_POINT);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            VerifyOffset(verifier, VT_SPLIT_POINT) &&
@@ -2361,37 +2361,37 @@ struct SplitParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct SplitParamBuilder {
   typedef SplitParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(SplitParam::VT_AXIS, axis, 0);
   }
-  void add_split_point(flatbuffers::Offset<flatbuffers::Vector<int32_t>> split_point) {
+  void add_split_point(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> split_point) {
     fbb_.AddOffset(SplitParam::VT_SPLIT_POINT, split_point);
   }
-  explicit SplitParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit SplitParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<SplitParam> Finish() {
+  ::flatbuffers::Offset<SplitParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<SplitParam>(end);
+    auto o = ::flatbuffers::Offset<SplitParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<SplitParam> CreateSplitParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<SplitParam> CreateSplitParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 0,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> split_point = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> split_point = 0) {
   SplitParamBuilder builder_(_fbb);
   builder_.add_split_point(split_point);
   builder_.add_axis(axis);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<SplitParam> CreateSplitParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<SplitParam> CreateSplitParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 0,
     const std::vector<int32_t> *split_point = nullptr) {
   auto split_point__ = split_point ? _fbb.CreateVector<int32_t>(*split_point) : 0;
@@ -2401,7 +2401,7 @@ inline flatbuffers::Offset<SplitParam> CreateSplitParamDirect(
       split_point__);
 }
 
-struct SplitToSequenceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct SplitToSequenceParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef SplitToSequenceParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4,
@@ -2413,7 +2413,7 @@ struct SplitToSequenceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table
   int32_t keepdims() const {
     return GetField<int32_t>(VT_KEEPDIMS, 1);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            VerifyField<int32_t>(verifier, VT_KEEPDIMS, 4) &&
@@ -2423,27 +2423,27 @@ struct SplitToSequenceParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table
 
 struct SplitToSequenceParamBuilder {
   typedef SplitToSequenceParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(SplitToSequenceParam::VT_AXIS, axis, 0);
   }
   void add_keepdims(int32_t keepdims) {
     fbb_.AddElement<int32_t>(SplitToSequenceParam::VT_KEEPDIMS, keepdims, 1);
   }
-  explicit SplitToSequenceParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit SplitToSequenceParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<SplitToSequenceParam> Finish() {
+  ::flatbuffers::Offset<SplitToSequenceParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<SplitToSequenceParam>(end);
+    auto o = ::flatbuffers::Offset<SplitToSequenceParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<SplitToSequenceParam> CreateSplitToSequenceParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<SplitToSequenceParam> CreateSplitToSequenceParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = 0,
     int32_t keepdims = 1) {
   SplitToSequenceParamBuilder builder_(_fbb);
@@ -2452,15 +2452,15 @@ inline flatbuffers::Offset<SplitToSequenceParam> CreateSplitToSequenceParam(
   return builder_.Finish();
 }
 
-struct SqueezeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct SqueezeParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef SqueezeParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXES = 4
   };
-  const flatbuffers::Vector<int32_t> *axes() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_AXES);
+  const ::flatbuffers::Vector<int32_t> *axes() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_AXES);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_AXES) &&
            verifier.VerifyVector(axes()) &&
@@ -2470,32 +2470,32 @@ struct SqueezeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct SqueezeParamBuilder {
   typedef SqueezeParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_axes(flatbuffers::Offset<flatbuffers::Vector<int32_t>> axes) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_axes(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> axes) {
     fbb_.AddOffset(SqueezeParam::VT_AXES, axes);
   }
-  explicit SqueezeParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit SqueezeParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<SqueezeParam> Finish() {
+  ::flatbuffers::Offset<SqueezeParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<SqueezeParam>(end);
+    auto o = ::flatbuffers::Offset<SqueezeParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<SqueezeParam> CreateSqueezeParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> axes = 0) {
+inline ::flatbuffers::Offset<SqueezeParam> CreateSqueezeParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> axes = 0) {
   SqueezeParamBuilder builder_(_fbb);
   builder_.add_axes(axes);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<SqueezeParam> CreateSqueezeParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<SqueezeParam> CreateSqueezeParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const std::vector<int32_t> *axes = nullptr) {
   auto axes__ = axes ? _fbb.CreateVector<int32_t>(*axes) : 0;
   return ppl::nn::pmx::onnx::CreateSqueezeParam(
@@ -2503,7 +2503,7 @@ inline flatbuffers::Offset<SqueezeParam> CreateSqueezeParamDirect(
       axes__);
 }
 
-struct TopKParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct TopKParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef TopKParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXIS = 4,
@@ -2519,7 +2519,7 @@ struct TopKParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   int32_t sorted() const {
     return GetField<int32_t>(VT_SORTED, 1);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<int32_t>(verifier, VT_AXIS, 4) &&
            VerifyField<int32_t>(verifier, VT_LARGEST, 4) &&
@@ -2530,8 +2530,8 @@ struct TopKParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct TopKParamBuilder {
   typedef TopKParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_axis(int32_t axis) {
     fbb_.AddElement<int32_t>(TopKParam::VT_AXIS, axis, -1);
   }
@@ -2541,19 +2541,19 @@ struct TopKParamBuilder {
   void add_sorted(int32_t sorted) {
     fbb_.AddElement<int32_t>(TopKParam::VT_SORTED, sorted, 1);
   }
-  explicit TopKParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit TopKParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<TopKParam> Finish() {
+  ::flatbuffers::Offset<TopKParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<TopKParam>(end);
+    auto o = ::flatbuffers::Offset<TopKParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<TopKParam> CreateTopKParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<TopKParam> CreateTopKParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     int32_t axis = -1,
     int32_t largest = 1,
     int32_t sorted = 1) {
@@ -2564,15 +2564,15 @@ inline flatbuffers::Offset<TopKParam> CreateTopKParam(
   return builder_.Finish();
 }
 
-struct TransposeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct TransposeParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef TransposeParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_PERM = 4
   };
-  const flatbuffers::Vector<int32_t> *perm() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_PERM);
+  const ::flatbuffers::Vector<int32_t> *perm() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_PERM);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_PERM) &&
            verifier.VerifyVector(perm()) &&
@@ -2582,32 +2582,32 @@ struct TransposeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct TransposeParamBuilder {
   typedef TransposeParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_perm(flatbuffers::Offset<flatbuffers::Vector<int32_t>> perm) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_perm(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> perm) {
     fbb_.AddOffset(TransposeParam::VT_PERM, perm);
   }
-  explicit TransposeParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit TransposeParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<TransposeParam> Finish() {
+  ::flatbuffers::Offset<TransposeParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<TransposeParam>(end);
+    auto o = ::flatbuffers::Offset<TransposeParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<TransposeParam> CreateTransposeParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> perm = 0) {
+inline ::flatbuffers::Offset<TransposeParam> CreateTransposeParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> perm = 0) {
   TransposeParamBuilder builder_(_fbb);
   builder_.add_perm(perm);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<TransposeParam> CreateTransposeParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<TransposeParam> CreateTransposeParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const std::vector<int32_t> *perm = nullptr) {
   auto perm__ = perm ? _fbb.CreateVector<int32_t>(*perm) : 0;
   return ppl::nn::pmx::onnx::CreateTransposeParam(
@@ -2615,15 +2615,15 @@ inline flatbuffers::Offset<TransposeParam> CreateTransposeParamDirect(
       perm__);
 }
 
-struct UnsqueezeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct UnsqueezeParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef UnsqueezeParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_AXES = 4
   };
-  const flatbuffers::Vector<int32_t> *axes() const {
-    return GetPointer<const flatbuffers::Vector<int32_t> *>(VT_AXES);
+  const ::flatbuffers::Vector<int32_t> *axes() const {
+    return GetPointer<const ::flatbuffers::Vector<int32_t> *>(VT_AXES);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_AXES) &&
            verifier.VerifyVector(axes()) &&
@@ -2633,32 +2633,32 @@ struct UnsqueezeParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct UnsqueezeParamBuilder {
   typedef UnsqueezeParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_axes(flatbuffers::Offset<flatbuffers::Vector<int32_t>> axes) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_axes(::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> axes) {
     fbb_.AddOffset(UnsqueezeParam::VT_AXES, axes);
   }
-  explicit UnsqueezeParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit UnsqueezeParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<UnsqueezeParam> Finish() {
+  ::flatbuffers::Offset<UnsqueezeParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<UnsqueezeParam>(end);
+    auto o = ::flatbuffers::Offset<UnsqueezeParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<UnsqueezeParam> CreateUnsqueezeParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<int32_t>> axes = 0) {
+inline ::flatbuffers::Offset<UnsqueezeParam> CreateUnsqueezeParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<int32_t>> axes = 0) {
   UnsqueezeParamBuilder builder_(_fbb);
   builder_.add_axes(axes);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<UnsqueezeParam> CreateUnsqueezeParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<UnsqueezeParam> CreateUnsqueezeParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const std::vector<int32_t> *axes = nullptr) {
   auto axes__ = axes ? _fbb.CreateVector<int32_t>(*axes) : 0;
   return ppl::nn::pmx::onnx::CreateUnsqueezeParam(
@@ -2666,7 +2666,7 @@ inline flatbuffers::Offset<UnsqueezeParam> CreateUnsqueezeParamDirect(
       axes__);
 }
 
-struct OpParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct OpParam FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef OpParamBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_VALUE_TYPE = 4,
@@ -2773,10 +2773,10 @@ struct OpParam FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   const ppl::nn::pmx::onnx::UnsqueezeParam *value_as_UnsqueezeParam() const {
     return value_type() == ppl::nn::pmx::onnx::OpParamType_UnsqueezeParam ? static_cast<const ppl::nn::pmx::onnx::UnsqueezeParam *>(value()) : nullptr;
   }
-  const flatbuffers::Vector<uint8_t> *data_() const {
-    return GetPointer<const flatbuffers::Vector<uint8_t> *>(VT_DATA_);
+  const ::flatbuffers::Vector<uint8_t> *data_() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA_);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint8_t>(verifier, VT_VALUE_TYPE, 1) &&
            VerifyOffset(verifier, VT_VALUE) &&
@@ -2913,33 +2913,33 @@ template<> inline const ppl::nn::pmx::onnx::UnsqueezeParam *OpParam::value_as<pp
 
 struct OpParamBuilder {
   typedef OpParam Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_value_type(ppl::nn::pmx::onnx::OpParamType value_type) {
     fbb_.AddElement<uint8_t>(OpParam::VT_VALUE_TYPE, static_cast<uint8_t>(value_type), 0);
   }
-  void add_value(flatbuffers::Offset<void> value) {
+  void add_value(::flatbuffers::Offset<void> value) {
     fbb_.AddOffset(OpParam::VT_VALUE, value);
   }
-  void add_data_(flatbuffers::Offset<flatbuffers::Vector<uint8_t>> data_) {
+  void add_data_(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data_) {
     fbb_.AddOffset(OpParam::VT_DATA_, data_);
   }
-  explicit OpParamBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit OpParamBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<OpParam> Finish() {
+  ::flatbuffers::Offset<OpParam> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<OpParam>(end);
+    auto o = ::flatbuffers::Offset<OpParam>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<OpParam> CreateOpParam(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<OpParam> CreateOpParam(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::OpParamType value_type = ppl::nn::pmx::onnx::OpParamType_NONE,
-    flatbuffers::Offset<void> value = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint8_t>> data_ = 0) {
+    ::flatbuffers::Offset<void> value = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data_ = 0) {
   OpParamBuilder builder_(_fbb);
   builder_.add_data_(data_);
   builder_.add_value(value);
@@ -2947,10 +2947,10 @@ inline flatbuffers::Offset<OpParam> CreateOpParam(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<OpParam> CreateOpParamDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<OpParam> CreateOpParamDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     ppl::nn::pmx::onnx::OpParamType value_type = ppl::nn::pmx::onnx::OpParamType_NONE,
-    flatbuffers::Offset<void> value = 0,
+    ::flatbuffers::Offset<void> value = 0,
     const std::vector<uint8_t> *data_ = nullptr) {
   auto data___ = data_ ? _fbb.CreateVector<uint8_t>(*data_) : 0;
   return ppl::nn::pmx::onnx::CreateOpParam(
@@ -2960,7 +2960,7 @@ inline flatbuffers::Offset<OpParam> CreateOpParamDirect(
       data___);
 }
 
-inline bool VerifyOpParamType(flatbuffers::Verifier &verifier, const void *obj, OpParamType type) {
+inline bool VerifyOpParamType(::flatbuffers::Verifier &verifier, const void *obj, OpParamType type) {
   switch (type) {
     case OpParamType_NONE: {
       return true;
@@ -3093,10 +3093,10 @@ inline bool VerifyOpParamType(flatbuffers::Verifier &verifier, const void *obj, 
   }
 }
 
-inline bool VerifyOpParamTypeVector(flatbuffers::Verifier &verifier, const flatbuffers::Vector<flatbuffers::Offset<void>> *values, const flatbuffers::Vector<uint8_t> *types) {
+inline bool VerifyOpParamTypeVector(::flatbuffers::Verifier &verifier, const ::flatbuffers::Vector<::flatbuffers::Offset<void>> *values, const ::flatbuffers::Vector<uint8_t> *types) {
   if (!values || !types) return !values && !types;
   if (values->size() != types->size()) return false;
-  for (flatbuffers::uoffset_t i = 0; i < values->size(); ++i) {
+  for (::flatbuffers::uoffset_t i = 0; i < values->size(); ++i) {
     if (!VerifyOpParamType(
         verifier,  values->Get(i), types->GetEnum<OpParamType>(i))) {
       return false;
@@ -3106,32 +3106,32 @@ inline bool VerifyOpParamTypeVector(flatbuffers::Verifier &verifier, const flatb
 }
 
 inline const ppl::nn::pmx::onnx::OpParam *GetOpParam(const void *buf) {
-  return flatbuffers::GetRoot<ppl::nn::pmx::onnx::OpParam>(buf);
+  return ::flatbuffers::GetRoot<ppl::nn::pmx::onnx::OpParam>(buf);
 }
 
 inline const ppl::nn::pmx::onnx::OpParam *GetSizePrefixedOpParam(const void *buf) {
-  return flatbuffers::GetSizePrefixedRoot<ppl::nn::pmx::onnx::OpParam>(buf);
+  return ::flatbuffers::GetSizePrefixedRoot<ppl::nn::pmx::onnx::OpParam>(buf);
 }
 
 inline bool VerifyOpParamBuffer(
-    flatbuffers::Verifier &verifier) {
+    ::flatbuffers::Verifier &verifier) {
   return verifier.VerifyBuffer<ppl::nn::pmx::onnx::OpParam>(nullptr);
 }
 
 inline bool VerifySizePrefixedOpParamBuffer(
-    flatbuffers::Verifier &verifier) {
+    ::flatbuffers::Verifier &verifier) {
   return verifier.VerifySizePrefixedBuffer<ppl::nn::pmx::onnx::OpParam>(nullptr);
 }
 
 inline void FinishOpParamBuffer(
-    flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<ppl::nn::pmx::onnx::OpParam> root) {
+    ::flatbuffers::FlatBufferBuilder &fbb,
+    ::flatbuffers::Offset<ppl::nn::pmx::onnx::OpParam> root) {
   fbb.Finish(root);
 }
 
 inline void FinishSizePrefixedOpParamBuffer(
-    flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<ppl::nn::pmx::onnx::OpParam> root) {
+    ::flatbuffers::FlatBufferBuilder &fbb,
+    ::flatbuffers::Offset<ppl::nn::pmx::onnx::OpParam> root) {
   fbb.FinishSizePrefixed(root);
 }
 

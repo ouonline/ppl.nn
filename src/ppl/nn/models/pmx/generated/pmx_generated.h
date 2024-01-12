@@ -8,9 +8,9 @@
 
 // Ensure the included flatbuffers.h is the same version as when this file was
 // generated, otherwise it may not be compatible.
-static_assert(FLATBUFFERS_VERSION_MAJOR == 2 &&
-              FLATBUFFERS_VERSION_MINOR == 0 &&
-              FLATBUFFERS_VERSION_REVISION == 8,
+static_assert(FLATBUFFERS_VERSION_MAJOR == 23 &&
+              FLATBUFFERS_VERSION_MINOR == 5 &&
+              FLATBUFFERS_VERSION_REVISION == 26,
              "Non-compatible flatbuffers version included");
 
 #include "types_generated.h"
@@ -77,20 +77,20 @@ inline const char * const *EnumNamesConstantFlag() {
 }
 
 inline const char *EnumNameConstantFlag(ConstantFlag e) {
-  if (flatbuffers::IsOutRange(e, ConstantFlag_EXTERNAL_DATA, ConstantFlag_EXTERNAL_DATA)) return "";
+  if (::flatbuffers::IsOutRange(e, ConstantFlag_EXTERNAL_DATA, ConstantFlag_EXTERNAL_DATA)) return "";
   const size_t index = static_cast<size_t>(e) - static_cast<size_t>(ConstantFlag_EXTERNAL_DATA);
   return EnumNamesConstantFlag()[index];
 }
 
-struct Edge FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Edge FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef EdgeBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_NAME = 4
   };
-  const flatbuffers::String *name() const {
-    return GetPointer<const flatbuffers::String *>(VT_NAME);
+  const ::flatbuffers::String *name() const {
+    return GetPointer<const ::flatbuffers::String *>(VT_NAME);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_NAME) &&
            verifier.VerifyString(name()) &&
@@ -100,32 +100,32 @@ struct Edge FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct EdgeBuilder {
   typedef Edge Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_name(flatbuffers::Offset<flatbuffers::String> name) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_name(::flatbuffers::Offset<::flatbuffers::String> name) {
     fbb_.AddOffset(Edge::VT_NAME, name);
   }
-  explicit EdgeBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit EdgeBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Edge> Finish() {
+  ::flatbuffers::Offset<Edge> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Edge>(end);
+    auto o = ::flatbuffers::Offset<Edge>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Edge> CreateEdge(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::String> name = 0) {
+inline ::flatbuffers::Offset<Edge> CreateEdge(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::String> name = 0) {
   EdgeBuilder builder_(_fbb);
   builder_.add_name(name);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<Edge> CreateEdgeDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Edge> CreateEdgeDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const char *name = nullptr) {
   auto name__ = name ? _fbb.CreateString(name) : 0;
   return ppl::nn::pmx::CreateEdge(
@@ -133,23 +133,23 @@ inline flatbuffers::Offset<Edge> CreateEdgeDirect(
       name__);
 }
 
-struct NodeType FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct NodeType FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef NodeTypeBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_DOMAIN = 4,
     VT_NAME = 6,
     VT_VERSION = 8
   };
-  const flatbuffers::String *domain() const {
-    return GetPointer<const flatbuffers::String *>(VT_DOMAIN);
+  const ::flatbuffers::String *domain() const {
+    return GetPointer<const ::flatbuffers::String *>(VT_DOMAIN);
   }
-  const flatbuffers::String *name() const {
-    return GetPointer<const flatbuffers::String *>(VT_NAME);
+  const ::flatbuffers::String *name() const {
+    return GetPointer<const ::flatbuffers::String *>(VT_NAME);
   }
   uint32_t version() const {
     return GetField<uint32_t>(VT_VERSION, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_DOMAIN) &&
            verifier.VerifyString(domain()) &&
@@ -162,32 +162,32 @@ struct NodeType FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct NodeTypeBuilder {
   typedef NodeType Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_domain(flatbuffers::Offset<flatbuffers::String> domain) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_domain(::flatbuffers::Offset<::flatbuffers::String> domain) {
     fbb_.AddOffset(NodeType::VT_DOMAIN, domain);
   }
-  void add_name(flatbuffers::Offset<flatbuffers::String> name) {
+  void add_name(::flatbuffers::Offset<::flatbuffers::String> name) {
     fbb_.AddOffset(NodeType::VT_NAME, name);
   }
   void add_version(uint32_t version) {
     fbb_.AddElement<uint32_t>(NodeType::VT_VERSION, version, 0);
   }
-  explicit NodeTypeBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit NodeTypeBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<NodeType> Finish() {
+  ::flatbuffers::Offset<NodeType> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<NodeType>(end);
+    auto o = ::flatbuffers::Offset<NodeType>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<NodeType> CreateNodeType(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::String> domain = 0,
-    flatbuffers::Offset<flatbuffers::String> name = 0,
+inline ::flatbuffers::Offset<NodeType> CreateNodeType(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::String> domain = 0,
+    ::flatbuffers::Offset<::flatbuffers::String> name = 0,
     uint32_t version = 0) {
   NodeTypeBuilder builder_(_fbb);
   builder_.add_version(version);
@@ -196,8 +196,8 @@ inline flatbuffers::Offset<NodeType> CreateNodeType(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<NodeType> CreateNodeTypeDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<NodeType> CreateNodeTypeDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const char *domain = nullptr,
     const char *name = nullptr,
     uint32_t version = 0) {
@@ -210,7 +210,7 @@ inline flatbuffers::Offset<NodeType> CreateNodeTypeDirect(
       version);
 }
 
-struct Node FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Node FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef NodeBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_NAME = 4,
@@ -219,22 +219,22 @@ struct Node FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
     VT_OUTPUTS = 10,
     VT_EXTRA_INPUTS = 12
   };
-  const flatbuffers::String *name() const {
-    return GetPointer<const flatbuffers::String *>(VT_NAME);
+  const ::flatbuffers::String *name() const {
+    return GetPointer<const ::flatbuffers::String *>(VT_NAME);
   }
   const ppl::nn::pmx::NodeType *type() const {
     return GetPointer<const ppl::nn::pmx::NodeType *>(VT_TYPE);
   }
-  const flatbuffers::Vector<uint32_t> *inputs() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_INPUTS);
+  const ::flatbuffers::Vector<uint32_t> *inputs() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_INPUTS);
   }
-  const flatbuffers::Vector<uint32_t> *outputs() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_OUTPUTS);
+  const ::flatbuffers::Vector<uint32_t> *outputs() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_OUTPUTS);
   }
-  const flatbuffers::Vector<uint32_t> *extra_inputs() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_EXTRA_INPUTS);
+  const ::flatbuffers::Vector<uint32_t> *extra_inputs() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_EXTRA_INPUTS);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_NAME) &&
            verifier.VerifyString(name()) &&
@@ -252,41 +252,41 @@ struct Node FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct NodeBuilder {
   typedef Node Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_name(flatbuffers::Offset<flatbuffers::String> name) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_name(::flatbuffers::Offset<::flatbuffers::String> name) {
     fbb_.AddOffset(Node::VT_NAME, name);
   }
-  void add_type(flatbuffers::Offset<ppl::nn::pmx::NodeType> type) {
+  void add_type(::flatbuffers::Offset<ppl::nn::pmx::NodeType> type) {
     fbb_.AddOffset(Node::VT_TYPE, type);
   }
-  void add_inputs(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> inputs) {
+  void add_inputs(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> inputs) {
     fbb_.AddOffset(Node::VT_INPUTS, inputs);
   }
-  void add_outputs(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> outputs) {
+  void add_outputs(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> outputs) {
     fbb_.AddOffset(Node::VT_OUTPUTS, outputs);
   }
-  void add_extra_inputs(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> extra_inputs) {
+  void add_extra_inputs(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> extra_inputs) {
     fbb_.AddOffset(Node::VT_EXTRA_INPUTS, extra_inputs);
   }
-  explicit NodeBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit NodeBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Node> Finish() {
+  ::flatbuffers::Offset<Node> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Node>(end);
+    auto o = ::flatbuffers::Offset<Node>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Node> CreateNode(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::String> name = 0,
-    flatbuffers::Offset<ppl::nn::pmx::NodeType> type = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> inputs = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> outputs = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> extra_inputs = 0) {
+inline ::flatbuffers::Offset<Node> CreateNode(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::String> name = 0,
+    ::flatbuffers::Offset<ppl::nn::pmx::NodeType> type = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> inputs = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> outputs = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> extra_inputs = 0) {
   NodeBuilder builder_(_fbb);
   builder_.add_extra_inputs(extra_inputs);
   builder_.add_outputs(outputs);
@@ -296,10 +296,10 @@ inline flatbuffers::Offset<Node> CreateNode(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<Node> CreateNodeDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Node> CreateNodeDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const char *name = nullptr,
-    flatbuffers::Offset<ppl::nn::pmx::NodeType> type = 0,
+    ::flatbuffers::Offset<ppl::nn::pmx::NodeType> type = 0,
     const std::vector<uint32_t> *inputs = nullptr,
     const std::vector<uint32_t> *outputs = nullptr,
     const std::vector<uint32_t> *extra_inputs = nullptr) {
@@ -316,7 +316,7 @@ inline flatbuffers::Offset<Node> CreateNodeDirect(
       extra_inputs__);
 }
 
-struct GraphTopo FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct GraphTopo FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef GraphTopoBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_NAME = 4,
@@ -327,28 +327,28 @@ struct GraphTopo FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
     VT_OUTPUTS = 14,
     VT_EXTRA_INPUTS = 16
   };
-  const flatbuffers::String *name() const {
-    return GetPointer<const flatbuffers::String *>(VT_NAME);
+  const ::flatbuffers::String *name() const {
+    return GetPointer<const ::flatbuffers::String *>(VT_NAME);
   }
-  const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Edge>> *edges() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Edge>> *>(VT_EDGES);
+  const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Edge>> *edges() const {
+    return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Edge>> *>(VT_EDGES);
   }
-  const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Node>> *nodes() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Node>> *>(VT_NODES);
+  const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Node>> *nodes() const {
+    return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Node>> *>(VT_NODES);
   }
-  const flatbuffers::Vector<uint32_t> *constants() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_CONSTANTS);
+  const ::flatbuffers::Vector<uint32_t> *constants() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_CONSTANTS);
   }
-  const flatbuffers::Vector<uint32_t> *inputs() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_INPUTS);
+  const ::flatbuffers::Vector<uint32_t> *inputs() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_INPUTS);
   }
-  const flatbuffers::Vector<uint32_t> *outputs() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_OUTPUTS);
+  const ::flatbuffers::Vector<uint32_t> *outputs() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_OUTPUTS);
   }
-  const flatbuffers::Vector<uint32_t> *extra_inputs() const {
-    return GetPointer<const flatbuffers::Vector<uint32_t> *>(VT_EXTRA_INPUTS);
+  const ::flatbuffers::Vector<uint32_t> *extra_inputs() const {
+    return GetPointer<const ::flatbuffers::Vector<uint32_t> *>(VT_EXTRA_INPUTS);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_NAME) &&
            verifier.VerifyString(name()) &&
@@ -372,49 +372,49 @@ struct GraphTopo FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct GraphTopoBuilder {
   typedef GraphTopo Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_name(flatbuffers::Offset<flatbuffers::String> name) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_name(::flatbuffers::Offset<::flatbuffers::String> name) {
     fbb_.AddOffset(GraphTopo::VT_NAME, name);
   }
-  void add_edges(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Edge>>> edges) {
+  void add_edges(::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Edge>>> edges) {
     fbb_.AddOffset(GraphTopo::VT_EDGES, edges);
   }
-  void add_nodes(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Node>>> nodes) {
+  void add_nodes(::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Node>>> nodes) {
     fbb_.AddOffset(GraphTopo::VT_NODES, nodes);
   }
-  void add_constants(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> constants) {
+  void add_constants(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> constants) {
     fbb_.AddOffset(GraphTopo::VT_CONSTANTS, constants);
   }
-  void add_inputs(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> inputs) {
+  void add_inputs(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> inputs) {
     fbb_.AddOffset(GraphTopo::VT_INPUTS, inputs);
   }
-  void add_outputs(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> outputs) {
+  void add_outputs(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> outputs) {
     fbb_.AddOffset(GraphTopo::VT_OUTPUTS, outputs);
   }
-  void add_extra_inputs(flatbuffers::Offset<flatbuffers::Vector<uint32_t>> extra_inputs) {
+  void add_extra_inputs(::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> extra_inputs) {
     fbb_.AddOffset(GraphTopo::VT_EXTRA_INPUTS, extra_inputs);
   }
-  explicit GraphTopoBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit GraphTopoBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<GraphTopo> Finish() {
+  ::flatbuffers::Offset<GraphTopo> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<GraphTopo>(end);
+    auto o = ::flatbuffers::Offset<GraphTopo>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<GraphTopo> CreateGraphTopo(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::String> name = 0,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Edge>>> edges = 0,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Node>>> nodes = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> constants = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> inputs = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> outputs = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint32_t>> extra_inputs = 0) {
+inline ::flatbuffers::Offset<GraphTopo> CreateGraphTopo(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::String> name = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Edge>>> edges = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Node>>> nodes = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> constants = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> inputs = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> outputs = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint32_t>> extra_inputs = 0) {
   GraphTopoBuilder builder_(_fbb);
   builder_.add_extra_inputs(extra_inputs);
   builder_.add_outputs(outputs);
@@ -426,18 +426,18 @@ inline flatbuffers::Offset<GraphTopo> CreateGraphTopo(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<GraphTopo> CreateGraphTopoDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<GraphTopo> CreateGraphTopoDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const char *name = nullptr,
-    const std::vector<flatbuffers::Offset<ppl::nn::pmx::Edge>> *edges = nullptr,
-    const std::vector<flatbuffers::Offset<ppl::nn::pmx::Node>> *nodes = nullptr,
+    const std::vector<::flatbuffers::Offset<ppl::nn::pmx::Edge>> *edges = nullptr,
+    const std::vector<::flatbuffers::Offset<ppl::nn::pmx::Node>> *nodes = nullptr,
     const std::vector<uint32_t> *constants = nullptr,
     const std::vector<uint32_t> *inputs = nullptr,
     const std::vector<uint32_t> *outputs = nullptr,
     const std::vector<uint32_t> *extra_inputs = nullptr) {
   auto name__ = name ? _fbb.CreateString(name) : 0;
-  auto edges__ = edges ? _fbb.CreateVector<flatbuffers::Offset<ppl::nn::pmx::Edge>>(*edges) : 0;
-  auto nodes__ = nodes ? _fbb.CreateVector<flatbuffers::Offset<ppl::nn::pmx::Node>>(*nodes) : 0;
+  auto edges__ = edges ? _fbb.CreateVector<::flatbuffers::Offset<ppl::nn::pmx::Edge>>(*edges) : 0;
+  auto nodes__ = nodes ? _fbb.CreateVector<::flatbuffers::Offset<ppl::nn::pmx::Node>>(*nodes) : 0;
   auto constants__ = constants ? _fbb.CreateVector<uint32_t>(*constants) : 0;
   auto inputs__ = inputs ? _fbb.CreateVector<uint32_t>(*inputs) : 0;
   auto outputs__ = outputs ? _fbb.CreateVector<uint32_t>(*outputs) : 0;
@@ -453,7 +453,7 @@ inline flatbuffers::Offset<GraphTopo> CreateGraphTopoDirect(
       extra_inputs__);
 }
 
-struct NodeInfo FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct NodeInfo FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef NodeInfoBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_NODE_ID = 4,
@@ -462,10 +462,10 @@ struct NodeInfo FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   uint32_t node_id() const {
     return GetField<uint32_t>(VT_NODE_ID, 0);
   }
-  const flatbuffers::Vector<uint8_t> *data() const {
-    return GetPointer<const flatbuffers::Vector<uint8_t> *>(VT_DATA);
+  const ::flatbuffers::Vector<uint8_t> *data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_NODE_ID, 4) &&
            VerifyOffset(verifier, VT_DATA) &&
@@ -476,37 +476,37 @@ struct NodeInfo FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct NodeInfoBuilder {
   typedef NodeInfo Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_node_id(uint32_t node_id) {
     fbb_.AddElement<uint32_t>(NodeInfo::VT_NODE_ID, node_id, 0);
   }
-  void add_data(flatbuffers::Offset<flatbuffers::Vector<uint8_t>> data) {
+  void add_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data) {
     fbb_.AddOffset(NodeInfo::VT_DATA, data);
   }
-  explicit NodeInfoBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit NodeInfoBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<NodeInfo> Finish() {
+  ::flatbuffers::Offset<NodeInfo> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<NodeInfo>(end);
+    auto o = ::flatbuffers::Offset<NodeInfo>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<NodeInfo> CreateNodeInfo(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<NodeInfo> CreateNodeInfo(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t node_id = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint8_t>> data = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data = 0) {
   NodeInfoBuilder builder_(_fbb);
   builder_.add_data(data);
   builder_.add_node_id(node_id);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<NodeInfo> CreateNodeInfoDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<NodeInfo> CreateNodeInfoDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t node_id = 0,
     const std::vector<uint8_t> *data = nullptr) {
   auto data__ = data ? _fbb.CreateVector<uint8_t>(*data) : 0;
@@ -516,7 +516,7 @@ inline flatbuffers::Offset<NodeInfo> CreateNodeInfoDirect(
       data__);
 }
 
-struct Constant FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Constant FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ConstantBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_EDGE_ID = 4,
@@ -536,7 +536,7 @@ struct Constant FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   uint64_t data_bytes() const {
     return GetField<uint64_t>(VT_DATA_BYTES, 0);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_EDGE_ID, 4) &&
            VerifyField<uint32_t>(verifier, VT_FLAGS, 4) &&
@@ -548,8 +548,8 @@ struct Constant FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ConstantBuilder {
   typedef Constant Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_edge_id(uint32_t edge_id) {
     fbb_.AddElement<uint32_t>(Constant::VT_EDGE_ID, edge_id, 0);
   }
@@ -562,19 +562,19 @@ struct ConstantBuilder {
   void add_data_bytes(uint64_t data_bytes) {
     fbb_.AddElement<uint64_t>(Constant::VT_DATA_BYTES, data_bytes, 0);
   }
-  explicit ConstantBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ConstantBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Constant> Finish() {
+  ::flatbuffers::Offset<Constant> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Constant>(end);
+    auto o = ::flatbuffers::Offset<Constant>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Constant> CreateConstant(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Constant> CreateConstant(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t edge_id = 0,
     uint32_t flags = 0,
     uint64_t data_offset = 0,
@@ -587,7 +587,7 @@ inline flatbuffers::Offset<Constant> CreateConstant(
   return builder_.Finish();
 }
 
-struct Shape FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Shape FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ShapeBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_EDGE_ID = 4,
@@ -604,10 +604,10 @@ struct Shape FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   ppl::nn::pmx::DataFormat data_format() const {
     return static_cast<ppl::nn::pmx::DataFormat>(GetField<uint32_t>(VT_DATA_FORMAT, 0));
   }
-  const flatbuffers::Vector<int64_t> *dims() const {
-    return GetPointer<const flatbuffers::Vector<int64_t> *>(VT_DIMS);
+  const ::flatbuffers::Vector<int64_t> *dims() const {
+    return GetPointer<const ::flatbuffers::Vector<int64_t> *>(VT_DIMS);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_EDGE_ID, 4) &&
            VerifyField<uint32_t>(verifier, VT_DATA_TYPE, 4) &&
@@ -620,8 +620,8 @@ struct Shape FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ShapeBuilder {
   typedef Shape Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_edge_id(uint32_t edge_id) {
     fbb_.AddElement<uint32_t>(Shape::VT_EDGE_ID, edge_id, 0);
   }
@@ -631,26 +631,26 @@ struct ShapeBuilder {
   void add_data_format(ppl::nn::pmx::DataFormat data_format) {
     fbb_.AddElement<uint32_t>(Shape::VT_DATA_FORMAT, static_cast<uint32_t>(data_format), 0);
   }
-  void add_dims(flatbuffers::Offset<flatbuffers::Vector<int64_t>> dims) {
+  void add_dims(::flatbuffers::Offset<::flatbuffers::Vector<int64_t>> dims) {
     fbb_.AddOffset(Shape::VT_DIMS, dims);
   }
-  explicit ShapeBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ShapeBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Shape> Finish() {
+  ::flatbuffers::Offset<Shape> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Shape>(end);
+    auto o = ::flatbuffers::Offset<Shape>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Shape> CreateShape(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Shape> CreateShape(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t edge_id = 0,
     ppl::nn::pmx::DataType data_type = ppl::nn::pmx::DataType_UNKNOWN,
     ppl::nn::pmx::DataFormat data_format = ppl::nn::pmx::DataFormat_UNKNOWN,
-    flatbuffers::Offset<flatbuffers::Vector<int64_t>> dims = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<int64_t>> dims = 0) {
   ShapeBuilder builder_(_fbb);
   builder_.add_dims(dims);
   builder_.add_data_format(data_format);
@@ -659,8 +659,8 @@ inline flatbuffers::Offset<Shape> CreateShape(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<Shape> CreateShapeDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Shape> CreateShapeDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t edge_id = 0,
     ppl::nn::pmx::DataType data_type = ppl::nn::pmx::DataType_UNKNOWN,
     ppl::nn::pmx::DataFormat data_format = ppl::nn::pmx::DataFormat_UNKNOWN,
@@ -674,7 +674,7 @@ inline flatbuffers::Offset<Shape> CreateShapeDirect(
       dims__);
 }
 
-struct Partition FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Partition FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef PartitionBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_ENGINE_ID = 4,
@@ -684,13 +684,13 @@ struct Partition FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   uint32_t engine_id() const {
     return GetField<uint32_t>(VT_ENGINE_ID, 0);
   }
-  const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::NodeInfo>> *nodes() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::NodeInfo>> *>(VT_NODES);
+  const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::NodeInfo>> *nodes() const {
+    return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::NodeInfo>> *>(VT_NODES);
   }
-  const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Constant>> *constants() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Constant>> *>(VT_CONSTANTS);
+  const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Constant>> *constants() const {
+    return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Constant>> *>(VT_CONSTANTS);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_ENGINE_ID, 4) &&
            VerifyOffset(verifier, VT_NODES) &&
@@ -705,33 +705,33 @@ struct Partition FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct PartitionBuilder {
   typedef Partition Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_engine_id(uint32_t engine_id) {
     fbb_.AddElement<uint32_t>(Partition::VT_ENGINE_ID, engine_id, 0);
   }
-  void add_nodes(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::NodeInfo>>> nodes) {
+  void add_nodes(::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::NodeInfo>>> nodes) {
     fbb_.AddOffset(Partition::VT_NODES, nodes);
   }
-  void add_constants(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Constant>>> constants) {
+  void add_constants(::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Constant>>> constants) {
     fbb_.AddOffset(Partition::VT_CONSTANTS, constants);
   }
-  explicit PartitionBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit PartitionBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Partition> Finish() {
+  ::flatbuffers::Offset<Partition> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Partition>(end);
+    auto o = ::flatbuffers::Offset<Partition>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Partition> CreatePartition(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Partition> CreatePartition(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t engine_id = 0,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::NodeInfo>>> nodes = 0,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Constant>>> constants = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::NodeInfo>>> nodes = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Constant>>> constants = 0) {
   PartitionBuilder builder_(_fbb);
   builder_.add_constants(constants);
   builder_.add_nodes(nodes);
@@ -739,13 +739,13 @@ inline flatbuffers::Offset<Partition> CreatePartition(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<Partition> CreatePartitionDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Partition> CreatePartitionDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t engine_id = 0,
-    const std::vector<flatbuffers::Offset<ppl::nn::pmx::NodeInfo>> *nodes = nullptr,
-    const std::vector<flatbuffers::Offset<ppl::nn::pmx::Constant>> *constants = nullptr) {
-  auto nodes__ = nodes ? _fbb.CreateVector<flatbuffers::Offset<ppl::nn::pmx::NodeInfo>>(*nodes) : 0;
-  auto constants__ = constants ? _fbb.CreateVector<flatbuffers::Offset<ppl::nn::pmx::Constant>>(*constants) : 0;
+    const std::vector<::flatbuffers::Offset<ppl::nn::pmx::NodeInfo>> *nodes = nullptr,
+    const std::vector<::flatbuffers::Offset<ppl::nn::pmx::Constant>> *constants = nullptr) {
+  auto nodes__ = nodes ? _fbb.CreateVector<::flatbuffers::Offset<ppl::nn::pmx::NodeInfo>>(*nodes) : 0;
+  auto constants__ = constants ? _fbb.CreateVector<::flatbuffers::Offset<ppl::nn::pmx::Constant>>(*constants) : 0;
   return ppl::nn::pmx::CreatePartition(
       _fbb,
       engine_id,
@@ -753,23 +753,23 @@ inline flatbuffers::Offset<Partition> CreatePartitionDirect(
       constants__);
 }
 
-struct GraphData FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct GraphData FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef GraphDataBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_SHAPES = 4,
     VT_PARTITIONS = 6,
     VT_SHARED_DATA = 8
   };
-  const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Shape>> *shapes() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Shape>> *>(VT_SHAPES);
+  const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Shape>> *shapes() const {
+    return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Shape>> *>(VT_SHAPES);
   }
-  const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Partition>> *partitions() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Partition>> *>(VT_PARTITIONS);
+  const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Partition>> *partitions() const {
+    return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Partition>> *>(VT_PARTITIONS);
   }
-  const flatbuffers::Vector<uint8_t> *shared_data() const {
-    return GetPointer<const flatbuffers::Vector<uint8_t> *>(VT_SHARED_DATA);
+  const ::flatbuffers::Vector<uint8_t> *shared_data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_SHARED_DATA);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_SHAPES) &&
            verifier.VerifyVector(shapes()) &&
@@ -785,33 +785,33 @@ struct GraphData FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct GraphDataBuilder {
   typedef GraphData Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_shapes(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Shape>>> shapes) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_shapes(::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Shape>>> shapes) {
     fbb_.AddOffset(GraphData::VT_SHAPES, shapes);
   }
-  void add_partitions(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Partition>>> partitions) {
+  void add_partitions(::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Partition>>> partitions) {
     fbb_.AddOffset(GraphData::VT_PARTITIONS, partitions);
   }
-  void add_shared_data(flatbuffers::Offset<flatbuffers::Vector<uint8_t>> shared_data) {
+  void add_shared_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> shared_data) {
     fbb_.AddOffset(GraphData::VT_SHARED_DATA, shared_data);
   }
-  explicit GraphDataBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit GraphDataBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<GraphData> Finish() {
+  ::flatbuffers::Offset<GraphData> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<GraphData>(end);
+    auto o = ::flatbuffers::Offset<GraphData>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<GraphData> CreateGraphData(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Shape>>> shapes = 0,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Partition>>> partitions = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint8_t>> shared_data = 0) {
+inline ::flatbuffers::Offset<GraphData> CreateGraphData(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Shape>>> shapes = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Partition>>> partitions = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> shared_data = 0) {
   GraphDataBuilder builder_(_fbb);
   builder_.add_shared_data(shared_data);
   builder_.add_partitions(partitions);
@@ -819,13 +819,13 @@ inline flatbuffers::Offset<GraphData> CreateGraphData(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<GraphData> CreateGraphDataDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    const std::vector<flatbuffers::Offset<ppl::nn::pmx::Shape>> *shapes = nullptr,
-    const std::vector<flatbuffers::Offset<ppl::nn::pmx::Partition>> *partitions = nullptr,
+inline ::flatbuffers::Offset<GraphData> CreateGraphDataDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    const std::vector<::flatbuffers::Offset<ppl::nn::pmx::Shape>> *shapes = nullptr,
+    const std::vector<::flatbuffers::Offset<ppl::nn::pmx::Partition>> *partitions = nullptr,
     const std::vector<uint8_t> *shared_data = nullptr) {
-  auto shapes__ = shapes ? _fbb.CreateVector<flatbuffers::Offset<ppl::nn::pmx::Shape>>(*shapes) : 0;
-  auto partitions__ = partitions ? _fbb.CreateVector<flatbuffers::Offset<ppl::nn::pmx::Partition>>(*partitions) : 0;
+  auto shapes__ = shapes ? _fbb.CreateVector<::flatbuffers::Offset<ppl::nn::pmx::Shape>>(*shapes) : 0;
+  auto partitions__ = partitions ? _fbb.CreateVector<::flatbuffers::Offset<ppl::nn::pmx::Partition>>(*partitions) : 0;
   auto shared_data__ = shared_data ? _fbb.CreateVector<uint8_t>(*shared_data) : 0;
   return ppl::nn::pmx::CreateGraphData(
       _fbb,
@@ -834,7 +834,7 @@ inline flatbuffers::Offset<GraphData> CreateGraphDataDirect(
       shared_data__);
 }
 
-struct Graph FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Graph FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef GraphBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TOPO = 4,
@@ -846,7 +846,7 @@ struct Graph FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   const ppl::nn::pmx::GraphData *data() const {
     return GetPointer<const ppl::nn::pmx::GraphData *>(VT_DATA);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_TOPO) &&
            verifier.VerifyTable(topo()) &&
@@ -858,48 +858,48 @@ struct Graph FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct GraphBuilder {
   typedef Graph Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_topo(flatbuffers::Offset<ppl::nn::pmx::GraphTopo> topo) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_topo(::flatbuffers::Offset<ppl::nn::pmx::GraphTopo> topo) {
     fbb_.AddOffset(Graph::VT_TOPO, topo);
   }
-  void add_data(flatbuffers::Offset<ppl::nn::pmx::GraphData> data) {
+  void add_data(::flatbuffers::Offset<ppl::nn::pmx::GraphData> data) {
     fbb_.AddOffset(Graph::VT_DATA, data);
   }
-  explicit GraphBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit GraphBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Graph> Finish() {
+  ::flatbuffers::Offset<Graph> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Graph>(end);
+    auto o = ::flatbuffers::Offset<Graph>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Graph> CreateGraph(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<ppl::nn::pmx::GraphTopo> topo = 0,
-    flatbuffers::Offset<ppl::nn::pmx::GraphData> data = 0) {
+inline ::flatbuffers::Offset<Graph> CreateGraph(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<ppl::nn::pmx::GraphTopo> topo = 0,
+    ::flatbuffers::Offset<ppl::nn::pmx::GraphData> data = 0) {
   GraphBuilder builder_(_fbb);
   builder_.add_data(data);
   builder_.add_topo(topo);
   return builder_.Finish();
 }
 
-struct Engine FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Engine FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef EngineBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_NAME = 4,
     VT_DATA = 6
   };
-  const flatbuffers::String *name() const {
-    return GetPointer<const flatbuffers::String *>(VT_NAME);
+  const ::flatbuffers::String *name() const {
+    return GetPointer<const ::flatbuffers::String *>(VT_NAME);
   }
-  const flatbuffers::Vector<uint8_t> *data() const {
-    return GetPointer<const flatbuffers::Vector<uint8_t> *>(VT_DATA);
+  const ::flatbuffers::Vector<uint8_t> *data() const {
+    return GetPointer<const ::flatbuffers::Vector<uint8_t> *>(VT_DATA);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_NAME) &&
            verifier.VerifyString(name()) &&
@@ -911,37 +911,37 @@ struct Engine FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct EngineBuilder {
   typedef Engine Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_name(flatbuffers::Offset<flatbuffers::String> name) {
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
+  void add_name(::flatbuffers::Offset<::flatbuffers::String> name) {
     fbb_.AddOffset(Engine::VT_NAME, name);
   }
-  void add_data(flatbuffers::Offset<flatbuffers::Vector<uint8_t>> data) {
+  void add_data(::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data) {
     fbb_.AddOffset(Engine::VT_DATA, data);
   }
-  explicit EngineBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit EngineBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Engine> Finish() {
+  ::flatbuffers::Offset<Engine> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Engine>(end);
+    auto o = ::flatbuffers::Offset<Engine>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Engine> CreateEngine(
-    flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::String> name = 0,
-    flatbuffers::Offset<flatbuffers::Vector<uint8_t>> data = 0) {
+inline ::flatbuffers::Offset<Engine> CreateEngine(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
+    ::flatbuffers::Offset<::flatbuffers::String> name = 0,
+    ::flatbuffers::Offset<::flatbuffers::Vector<uint8_t>> data = 0) {
   EngineBuilder builder_(_fbb);
   builder_.add_data(data);
   builder_.add_name(name);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<Engine> CreateEngineDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Engine> CreateEngineDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     const char *name = nullptr,
     const std::vector<uint8_t> *data = nullptr) {
   auto name__ = name ? _fbb.CreateString(name) : 0;
@@ -952,7 +952,7 @@ inline flatbuffers::Offset<Engine> CreateEngineDirect(
       data__);
 }
 
-struct Model FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+struct Model FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   typedef ModelBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_VERSION = 4,
@@ -963,16 +963,16 @@ struct Model FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   uint32_t version() const {
     return GetField<uint32_t>(VT_VERSION, 0);
   }
-  const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Engine>> *engines() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Engine>> *>(VT_ENGINES);
+  const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Engine>> *engines() const {
+    return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Engine>> *>(VT_ENGINES);
   }
   const ppl::nn::pmx::Graph *graph() const {
     return GetPointer<const ppl::nn::pmx::Graph *>(VT_GRAPH);
   }
-  const flatbuffers::String *producer() const {
-    return GetPointer<const flatbuffers::String *>(VT_PRODUCER);
+  const ::flatbuffers::String *producer() const {
+    return GetPointer<const ::flatbuffers::String *>(VT_PRODUCER);
   }
-  bool Verify(flatbuffers::Verifier &verifier) const {
+  bool Verify(::flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<uint32_t>(verifier, VT_VERSION, 4) &&
            VerifyOffset(verifier, VT_ENGINES) &&
@@ -988,37 +988,37 @@ struct Model FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
 
 struct ModelBuilder {
   typedef Model Table;
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
+  ::flatbuffers::FlatBufferBuilder &fbb_;
+  ::flatbuffers::uoffset_t start_;
   void add_version(uint32_t version) {
     fbb_.AddElement<uint32_t>(Model::VT_VERSION, version, 0);
   }
-  void add_engines(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Engine>>> engines) {
+  void add_engines(::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Engine>>> engines) {
     fbb_.AddOffset(Model::VT_ENGINES, engines);
   }
-  void add_graph(flatbuffers::Offset<ppl::nn::pmx::Graph> graph) {
+  void add_graph(::flatbuffers::Offset<ppl::nn::pmx::Graph> graph) {
     fbb_.AddOffset(Model::VT_GRAPH, graph);
   }
-  void add_producer(flatbuffers::Offset<flatbuffers::String> producer) {
+  void add_producer(::flatbuffers::Offset<::flatbuffers::String> producer) {
     fbb_.AddOffset(Model::VT_PRODUCER, producer);
   }
-  explicit ModelBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit ModelBuilder(::flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<Model> Finish() {
+  ::flatbuffers::Offset<Model> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<Model>(end);
+    auto o = ::flatbuffers::Offset<Model>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<Model> CreateModel(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Model> CreateModel(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t version = 0,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<ppl::nn::pmx::Engine>>> engines = 0,
-    flatbuffers::Offset<ppl::nn::pmx::Graph> graph = 0,
-    flatbuffers::Offset<flatbuffers::String> producer = 0) {
+    ::flatbuffers::Offset<::flatbuffers::Vector<::flatbuffers::Offset<ppl::nn::pmx::Engine>>> engines = 0,
+    ::flatbuffers::Offset<ppl::nn::pmx::Graph> graph = 0,
+    ::flatbuffers::Offset<::flatbuffers::String> producer = 0) {
   ModelBuilder builder_(_fbb);
   builder_.add_producer(producer);
   builder_.add_graph(graph);
@@ -1027,13 +1027,13 @@ inline flatbuffers::Offset<Model> CreateModel(
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<Model> CreateModelDirect(
-    flatbuffers::FlatBufferBuilder &_fbb,
+inline ::flatbuffers::Offset<Model> CreateModelDirect(
+    ::flatbuffers::FlatBufferBuilder &_fbb,
     uint32_t version = 0,
-    const std::vector<flatbuffers::Offset<ppl::nn::pmx::Engine>> *engines = nullptr,
-    flatbuffers::Offset<ppl::nn::pmx::Graph> graph = 0,
+    const std::vector<::flatbuffers::Offset<ppl::nn::pmx::Engine>> *engines = nullptr,
+    ::flatbuffers::Offset<ppl::nn::pmx::Graph> graph = 0,
     const char *producer = nullptr) {
-  auto engines__ = engines ? _fbb.CreateVector<flatbuffers::Offset<ppl::nn::pmx::Engine>>(*engines) : 0;
+  auto engines__ = engines ? _fbb.CreateVector<::flatbuffers::Offset<ppl::nn::pmx::Engine>>(*engines) : 0;
   auto producer__ = producer ? _fbb.CreateString(producer) : 0;
   return ppl::nn::pmx::CreateModel(
       _fbb,
@@ -1044,11 +1044,11 @@ inline flatbuffers::Offset<Model> CreateModelDirect(
 }
 
 inline const ppl::nn::pmx::Model *GetModel(const void *buf) {
-  return flatbuffers::GetRoot<ppl::nn::pmx::Model>(buf);
+  return ::flatbuffers::GetRoot<ppl::nn::pmx::Model>(buf);
 }
 
 inline const ppl::nn::pmx::Model *GetSizePrefixedModel(const void *buf) {
-  return flatbuffers::GetSizePrefixedRoot<ppl::nn::pmx::Model>(buf);
+  return ::flatbuffers::GetSizePrefixedRoot<ppl::nn::pmx::Model>(buf);
 }
 
 inline const char *ModelIdentifier() {
@@ -1056,34 +1056,34 @@ inline const char *ModelIdentifier() {
 }
 
 inline bool ModelBufferHasIdentifier(const void *buf) {
-  return flatbuffers::BufferHasIdentifier(
+  return ::flatbuffers::BufferHasIdentifier(
       buf, ModelIdentifier());
 }
 
 inline bool SizePrefixedModelBufferHasIdentifier(const void *buf) {
-  return flatbuffers::BufferHasIdentifier(
+  return ::flatbuffers::BufferHasIdentifier(
       buf, ModelIdentifier(), true);
 }
 
 inline bool VerifyModelBuffer(
-    flatbuffers::Verifier &verifier) {
+    ::flatbuffers::Verifier &verifier) {
   return verifier.VerifyBuffer<ppl::nn::pmx::Model>(ModelIdentifier());
 }
 
 inline bool VerifySizePrefixedModelBuffer(
-    flatbuffers::Verifier &verifier) {
+    ::flatbuffers::Verifier &verifier) {
   return verifier.VerifySizePrefixedBuffer<ppl::nn::pmx::Model>(ModelIdentifier());
 }
 
 inline void FinishModelBuffer(
-    flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<ppl::nn::pmx::Model> root) {
+    ::flatbuffers::FlatBufferBuilder &fbb,
+    ::flatbuffers::Offset<ppl::nn::pmx::Model> root) {
   fbb.Finish(root, ModelIdentifier());
 }
 
 inline void FinishSizePrefixedModelBuffer(
-    flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<ppl::nn::pmx::Model> root) {
+    ::flatbuffers::FlatBufferBuilder &fbb,
+    ::flatbuffers::Offset<ppl::nn::pmx::Model> root) {
   fbb.FinishSizePrefixed(root, ModelIdentifier());
 }
 
